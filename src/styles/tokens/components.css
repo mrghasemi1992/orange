@@ -3,8 +3,24 @@
 :root {
   --opacity-disabled: 0.45;
 
-  /* Icons (lucide-react) */
+  /* Icons (lucide-react). Stroke 1.75, never above 2. */
   --icon-stroke: 1.75;
+  --icon-size-xs: 11px; /* small badge */
+  --icon-size-sm: 12px; /* badge, external link */
+  --icon-size-meta: 14px; /* meta items, small buttons */
+  --icon-size-md: 16px; /* buttons, nav, small icon buttons */
+  --icon-size-lg: 18px; /* icon buttons */
+
+  /* Logo lockup: mark + wordmark */
+  --logo-mark-sm: 20px;
+  --logo-wordmark-sm: 16px;
+  --logo-gap-sm: 6px;
+  --logo-mark-md: 28px;
+  --logo-wordmark-md: 22px;
+  --logo-gap-md: 9px;
+  --logo-mark-lg: 44px;
+  --logo-wordmark-lg: 34px;
+  --logo-gap-lg: 14px;
 
   /* Buttons and icon buttons */
   --control-height-sm: 28px;

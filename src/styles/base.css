@@ -49,6 +49,12 @@ hr {
   margin: var(--space-6) 0;
 }
 
+/* lucide-react icons: CSS wins over the stroke-width attribute */
+svg.lucide {
+  flex: none;
+  stroke-width: var(--icon-stroke);
+}
+
 code,
 kbd,
 samp {

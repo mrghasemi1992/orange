@@ -1,0 +1,37 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--logo-gap);
+  color: var(--text);
+}
+
+.mark {
+  width: var(--logo-mark);
+  height: var(--logo-mark);
+}
+
+.wordmark {
+  font-family: var(--font-mono);
+  font-size: var(--logo-wordmark);
+  font-weight: var(--type-wordmark-weight);
+  line-height: var(--line-height-none);
+  letter-spacing: var(--type-wordmark-tracking);
+}
+
+.sm {
+  --logo-mark: var(--logo-mark-sm);
+  --logo-wordmark: var(--logo-wordmark-sm);
+  --logo-gap: var(--logo-gap-sm);
+}
+
+.md {
+  --logo-mark: var(--logo-mark-md);
+  --logo-wordmark: var(--logo-wordmark-md);
+  --logo-gap: var(--logo-gap-md);
+}
+
+.lg {
+  --logo-mark: var(--logo-mark-lg);
+  --logo-wordmark: var(--logo-wordmark-lg);
+  --logo-gap: var(--logo-gap-lg);
+}
