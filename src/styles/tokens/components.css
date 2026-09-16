@@ -33,6 +33,8 @@
   --tooltip-padding-x: var(--space-2);
   --tooltip-max-width: 15rem;
   --tooltip-chip-padding: 1px var(--space-1);
+  --tooltip-enter-scale: 0.97;
+  --z-tooltip: 40;
 
   /* Keyboard key */
   --kbd-height-sm: 18px;
