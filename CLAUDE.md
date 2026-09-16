@@ -80,8 +80,14 @@ Orange is a read-only Hacker News client with a modern reader UI. It is a portfo
 
 Phase 0a (project setup) has no design step. It runs in Claude Code only.
 
-- **Git:** project setup (Phase 0a) is committed directly on `main`. Every step after that gets its own branch created from `main` (for example `phase-0-design-system`). The PR description summarizes what the phase added.
-- **Commit messages:** use [Conventional Commits](https://www.conventionalcommits.org/): `type(optional scope): short summary`, for example `feat(comments): collapse threads` or `chore: allow esbuild install script`. Common types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`.
+- **Git:** project setup (Phase 0a) is committed directly on `main`. Every step after that gets its own branch created from `main`.
+- **Branch names:** follow [Conventional Branch](https://conventionalbranch.org/): `<type>/<description>`.
+  - Types: `feature/`, `bugfix/`, `hotfix/`, `release/`, `chore/`. Use these full forms, not `feat/` or `fix/`.
+  - Only lowercase letters, numbers, and hyphens. No double hyphens, and no hyphen at the start or end.
+  - `main` has no prefix.
+  - Phase branches use `feature/phase-<number>-<short-name>` (for example `feature/phase-0-design-system`, `feature/phase-1-app-shell`).
+- **Commit messages:** follow [Conventional Commits](https://www.conventionalcommits.org/): `<type>: <description>` (for example `feat: add button component`, `fix: correct dark theme border color`, `chore: install storybook`).
+- The PR description summarizes what the phase added.
 - No hand-written design spec files. The design comes from the Claude Design handoff.
 - When a decision changes, update this file in the same PR.
 
@@ -90,7 +96,7 @@ Phase 0a (project setup) has no design step. It runs in Claude Code only.
 | # | Phase | Status |
 |---|-------|--------|
 | 0a | Project setup (on `main`): Next.js, TypeScript, ESLint, packages, Storybook install | Done |
-| 0b | Design system (branch `phase-0-design-system`): logo, tokens, fonts, themes, base components, Storybook wiring, first Vercel deploy | Not started |
+| 0b | Design system (branch `feature/phase-0-design-system`): logo, tokens, fonts, themes, base components, Storybook wiring, first Vercel deploy | Not started |
 | 1 | App shell: sidebar (Top, New, Best, Ask, Show, Jobs), theme toggle, mobile layout, loading/error/not-found pages | Not started |
 | 2 | Story lists: Zod schemas, story rows with type icons, load more on scroll | Not started |
 | 3 | Story page and comments: Algolia comment tree, HTML sanitizing, collapse, deleted/dead handling, polls, virtualization | Not started |
