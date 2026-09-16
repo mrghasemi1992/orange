@@ -6,9 +6,17 @@ import { Button } from "./index";
 const meta = {
   title: "Components/Button",
   component: Button,
-  args: { children: "Load more", variant: "secondary", size: "md", disabled: false },
+  args: {
+    children: "Load more",
+    variant: "secondary",
+    size: "md",
+    disabled: false,
+  },
   argTypes: {
-    variant: { control: "inline-radio", options: ["primary", "secondary", "ghost"] },
+    variant: {
+      control: "inline-radio",
+      options: ["primary", "secondary", "ghost"],
+    },
     size: { control: "inline-radio", options: ["sm", "md"] },
     iconLeft: { control: false },
     iconRight: { control: false },
@@ -18,14 +26,27 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const row = { display: "flex", alignItems: "center", gap: "var(--space-3)", flexWrap: "wrap" } as const;
-const stack = { display: "flex", flexDirection: "column", gap: "var(--space-4)" } as const;
+const row = {
+  display: "flex",
+  alignItems: "center",
+  gap: "var(--space-3)",
+  flexWrap: "wrap",
+} as const;
+const stack = {
+  display: "flex",
+  flexDirection: "column",
+  gap: "var(--space-4)",
+} as const;
 
 export const Playground: Story = {};
 
-export const Primary: Story = { args: { variant: "primary", children: "Open story" } };
+export const Primary: Story = {
+  args: { variant: "primary", children: "Open story" },
+};
 
-export const Secondary: Story = { args: { variant: "secondary", children: "Load more" } };
+export const Secondary: Story = {
+  args: { variant: "secondary", children: "Load more" },
+};
 
 export const Ghost: Story = { args: { variant: "ghost", children: "Dismiss" } };
 
@@ -34,7 +55,12 @@ export const WithIcon: Story = {
 };
 
 export const AsLink: Story = {
-  args: { href: "/", variant: "primary", iconRight: ExternalLink, children: "Visit site" },
+  args: {
+    href: "/",
+    variant: "primary",
+    iconRight: ExternalLink,
+    children: "Visit site",
+  },
 };
 
 export const Disabled: Story = {

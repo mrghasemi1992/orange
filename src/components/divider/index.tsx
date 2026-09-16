@@ -9,11 +9,22 @@ type DividerProps = {
 };
 
 /** A 1px hairline. Orange separates with rules and space, not boxes. */
-export function Divider({ orientation = "horizontal", spacing = "default", className }: DividerProps) {
-  const classes = cx(styles.root, styles[orientation], styles[spacing], className);
+export function Divider({
+  orientation = "horizontal",
+  spacing = "default",
+  className,
+}: DividerProps) {
+  const classes = cx(
+    styles.root,
+    styles[orientation],
+    styles[spacing],
+    className,
+  );
 
   if (orientation === "vertical") {
-    return <span className={classes} role="separator" aria-orientation="vertical" />;
+    return (
+      <span className={classes} role="separator" aria-orientation="vertical" />
+    );
   }
   return <hr className={classes} />;
 }

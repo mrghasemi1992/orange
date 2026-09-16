@@ -1,6 +1,14 @@
 "use client";
 
-import { ArrowBigUp, ChartColumn, Clock, ExternalLink, Feather, FileText, MessageSquare } from "lucide-react";
+import {
+  ArrowBigUp,
+  ChartColumn,
+  Clock,
+  ExternalLink,
+  Feather,
+  FileText,
+  MessageSquare,
+} from "lucide-react";
 import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 
 import { Badge } from "@/components/badge";
@@ -14,8 +22,32 @@ import styles from "./styles.module.css";
  * Storybook-only documentation of the design system. Not used by the app.
  */
 
-const RAMP = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"];
-const GRAYS = ["0", "25", "50", "100", "200", "300", "400", "500", "600", "700", "800", "900"];
+const RAMP = [
+  "50",
+  "100",
+  "200",
+  "300",
+  "400",
+  "500",
+  "600",
+  "700",
+  "800",
+  "900",
+];
+const GRAYS = [
+  "0",
+  "25",
+  "50",
+  "100",
+  "200",
+  "300",
+  "400",
+  "500",
+  "600",
+  "700",
+  "800",
+  "900",
+];
 const INKS = ["900", "850", "800", "750", "700", "600", "500"];
 
 const SEMANTIC: Array<[token: string, use: string]> = [
@@ -55,11 +87,15 @@ function useTokenValue(token: string) {
   useLayoutEffect(() => {
     const element = ref.current;
     if (!element) return;
-    const read = () => setValue(getComputedStyle(element).getPropertyValue(token).trim());
+    const read = () =>
+      setValue(getComputedStyle(element).getPropertyValue(token).trim());
     read();
     // Re-read when the Storybook theme toolbar changes data-theme on <html>.
     const observer = new MutationObserver(read);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
     return () => observer.disconnect();
   }, [token]);
 
@@ -70,7 +106,10 @@ function Swatch({ token }: { token: string }) {
   const { ref, value } = useTokenValue(token);
   return (
     <span ref={ref} className={styles.swatch}>
-      <span className={styles.swatchColor} style={{ background: `var(${token})` }} />
+      <span
+        className={styles.swatchColor}
+        style={{ background: `var(${token})` }}
+      />
       <span className={styles.swatchName}>{token.replace(/^--/, "")}</span>
       <span className={styles.swatchValue}>{value}</span>
     </span>
@@ -81,7 +120,10 @@ function TokenRow({ token, use }: { token: string; use: string }) {
   const { ref, value } = useTokenValue(token);
   return (
     <span ref={ref} className={styles.tokenRow}>
-      <span className={styles.tokenDot} style={{ background: `var(${token})` }} />
+      <span
+        className={styles.tokenDot}
+        style={{ background: `var(${token})` }}
+      />
       <code className={styles.tokenName}>{token}</code>
       <span className={styles.tokenValue}>{value}</span>
       <span className={styles.tokenUse}>{use}</span>
@@ -89,7 +131,15 @@ function TokenRow({ token, use }: { token: string; use: string }) {
   );
 }
 
-function Section({ title, lede, children }: { title: string; lede: string; children: ReactNode }) {
+function Section({
+  title,
+  lede,
+  children,
+}: {
+  title: string;
+  lede: string;
+  children: ReactNode;
+}) {
   return (
     <section className={styles.section}>
       <h2 className={styles.heading}>{title}</h2>
@@ -208,28 +258,43 @@ export function OtherTokens() {
         <div className={styles.scale}>
           {SPACES.map((step) => (
             <span key={step} className={styles.scaleItem}>
-              <span className={styles.scaleBar} style={{ width: `var(--space-${step})` }} />
+              <span
+                className={styles.scaleBar}
+                style={{ width: `var(--space-${step})` }}
+              />
               <code className={styles.caption}>space-{step}</code>
             </span>
           ))}
         </div>
       </Section>
-      <Section title="Radius" lede="Chosen by part size. Never one radius on everything.">
+      <Section
+        title="Radius"
+        lede="Chosen by part size. Never one radius on everything."
+      >
         <div className={styles.boxes}>
           {RADII.map((step) => (
             <span key={step} className={styles.boxItem}>
-              <span className={styles.radiusBox} style={{ borderRadius: `var(--radius-${step})` }} />
+              <span
+                className={styles.radiusBox}
+                style={{ borderRadius: `var(--radius-${step})` }}
+              />
               <code className={styles.caption}>radius-{step}</code>
             </span>
           ))}
         </div>
       </Section>
-      <Section title="Shadow" lede="Almost invisible by design. Dark shadows add a faint light ring.">
+      <Section
+        title="Shadow"
+        lede="Almost invisible by design. Dark shadows add a faint light ring."
+      >
         <ThemePanes>
           <div className={styles.boxes}>
             {SHADOWS.map((step) => (
               <span key={step} className={styles.boxItem}>
-                <span className={styles.shadowBox} style={{ boxShadow: `var(--shadow-${step})` }} />
+                <span
+                  className={styles.shadowBox}
+                  style={{ boxShadow: `var(--shadow-${step})` }}
+                />
                 <code className={styles.caption}>shadow-{step}</code>
               </span>
             ))}

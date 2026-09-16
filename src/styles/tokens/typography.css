@@ -2,8 +2,10 @@
 
 :root {
   /* --font-noto-sans and --font-plex-mono come from next/font (src/styles/fonts.ts). */
-  --font-sans: var(--font-noto-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-sans:
+    var(--font-noto-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:
+    var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --weight-regular: 400;
   --weight-medium: 500;

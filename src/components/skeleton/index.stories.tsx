@@ -6,7 +6,9 @@ const meta = {
   title: "Components/Skeleton",
   component: Skeleton,
   args: { variant: "line", lines: 1 },
-  argTypes: { variant: { control: "inline-radio", options: ["line", "title", "block"] } },
+  argTypes: {
+    variant: { control: "inline-radio", options: ["line", "title", "block"] },
+  },
   decorators: [
     (Story) => (
       <div aria-busy="true" style={{ maxWidth: "var(--content-max)" }}>
@@ -30,7 +32,13 @@ export const MultipleLines: Story = { args: { lines: 3 } };
 /** A loading story row: title plus meta line. */
 export const StoryRow: Story = {
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "var(--space-2)",
+      }}
+    >
       <Skeleton variant="title" width="72%" />
       <Skeleton width="40%" />
     </div>

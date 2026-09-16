@@ -20,15 +20,28 @@ const STACK_WIDTHS = ["100%", "92%", "68%", "84%", "74%"];
 /**
  * Loading placeholder. Hidden from assistive tech; mark the loading region with aria-busy="true".
  */
-export function Skeleton({ variant = "line", width, height, lines = 1, className }: SkeletonProps) {
+export function Skeleton({
+  variant = "line",
+  width,
+  height,
+  lines = 1,
+  className,
+}: SkeletonProps) {
   const classes = cx(styles.root, styles[variant], className);
-  const style = (w: string | undefined): CSSProperties => ({ width: w, height });
+  const style = (w: string | undefined): CSSProperties => ({
+    width: w,
+    height,
+  });
 
   if (lines > 1) {
     return (
       <span className={styles.stack} aria-hidden="true">
         {Array.from({ length: lines }, (_, i) => (
-          <span key={i} className={classes} style={style(width ?? STACK_WIDTHS[i % STACK_WIDTHS.length])} />
+          <span
+            key={i}
+            className={classes}
+            style={style(width ?? STACK_WIDTHS[i % STACK_WIDTHS.length])}
+          />
         ))}
       </span>
     );

@@ -18,14 +18,18 @@ type ButtonBaseProps = {
 };
 
 type ButtonAsButton = ButtonBaseProps &
-  Omit<ComponentPropsWithoutRef<"button">, keyof ButtonBaseProps> & { href?: undefined };
+  Omit<ComponentPropsWithoutRef<"button">, keyof ButtonBaseProps> & {
+    href?: undefined;
+  };
 
 type ButtonAsLink = ButtonBaseProps &
   Omit<ComponentPropsWithoutRef<"a">, keyof ButtonBaseProps> & { href: string };
 
 export type ButtonProps = ButtonAsButton | ButtonAsLink;
 
-type AnchorProps = Omit<ComponentPropsWithoutRef<"a">, "href"> & { href: string };
+type AnchorProps = Omit<ComponentPropsWithoutRef<"a">, "href"> & {
+  href: string;
+};
 type NativeButtonProps = ComponentPropsWithoutRef<"button">;
 
 /** Text button: primary (one per view), secondary, or ghost. Renders a link when `href` is set. */
@@ -78,7 +82,12 @@ export function Button({
   const { type = "button", ...buttonProps } = rest as NativeButtonProps;
 
   return (
-    <button className={classes} type={type} disabled={disabled} {...buttonProps}>
+    <button
+      className={classes}
+      type={type}
+      disabled={disabled}
+      {...buttonProps}
+    >
       {content}
     </button>
   );

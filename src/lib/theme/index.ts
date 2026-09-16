@@ -73,14 +73,18 @@ export function subscribeTheme(listener: () => void): () => void {
   listeners.add(listener);
 
   if (listeners.size === 1) {
-    window.matchMedia(DARK_QUERY).addEventListener("change", handleExternalChange);
+    window
+      .matchMedia(DARK_QUERY)
+      .addEventListener("change", handleExternalChange);
     window.addEventListener("storage", handleStorage);
   }
 
   return () => {
     listeners.delete(listener);
     if (listeners.size === 0) {
-      window.matchMedia(DARK_QUERY).removeEventListener("change", handleExternalChange);
+      window
+        .matchMedia(DARK_QUERY)
+        .removeEventListener("change", handleExternalChange);
       window.removeEventListener("storage", handleStorage);
     }
   };
@@ -92,5 +96,6 @@ function handleExternalChange() {
 }
 
 function handleStorage(event: StorageEvent) {
-  if (event.key === null || event.key === THEME_STORAGE_KEY) handleExternalChange();
+  if (event.key === null || event.key === THEME_STORAGE_KEY)
+    handleExternalChange();
 }

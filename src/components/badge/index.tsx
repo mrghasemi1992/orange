@@ -25,7 +25,13 @@ export function Badge({
   href,
   className,
 }: BadgeProps) {
-  const classes = cx(styles.root, styles[variant], styles[size], href && styles.link, className);
+  const classes = cx(
+    styles.root,
+    styles[variant],
+    styles[size],
+    href && styles.link,
+    className,
+  );
   const content = (
     <>
       {Icon ? <Icon className={styles.icon} /> : null}

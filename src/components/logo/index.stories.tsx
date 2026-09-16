@@ -16,7 +16,13 @@ export const Default: Story = {};
 
 export const Sizes: Story = {
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-6)" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "var(--space-6)",
+      }}
+    >
       <Logo size="lg" />
       <Logo size="md" />
       <Logo size="sm" />

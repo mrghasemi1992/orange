@@ -18,8 +18,15 @@ export const Small: Story = { args: { size: "sm", children: "?" } };
 
 export const InText: Story = {
   render: () => (
-    <p style={{ margin: 0, fontSize: "var(--type-meta-size)", color: "var(--text-secondary)" }}>
-      Press <Kbd>J</Kbd> and <Kbd>K</Kbd> to move between stories, <Kbd>?</Kbd> for all shortcuts.
+    <p
+      style={{
+        margin: 0,
+        fontSize: "var(--type-meta-size)",
+        color: "var(--text-secondary)",
+      }}
+    >
+      Press <Kbd>J</Kbd> and <Kbd>K</Kbd> to move between stories, <Kbd>?</Kbd>{" "}
+      for all shortcuts.
     </p>
   ),
 };

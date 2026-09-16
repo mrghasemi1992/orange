@@ -7,15 +7,25 @@ const meta = {
   component: Divider,
   args: { orientation: "horizontal", spacing: "default" },
   argTypes: {
-    orientation: { control: "inline-radio", options: ["horizontal", "vertical"] },
-    spacing: { control: "inline-radio", options: ["none", "tight", "default", "loose"] },
+    orientation: {
+      control: "inline-radio",
+      options: ["horizontal", "vertical"],
+    },
+    spacing: {
+      control: "inline-radio",
+      options: ["none", "tight", "default", "loose"],
+    },
   },
 } satisfies Meta<typeof Divider>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const text = { margin: 0, color: "var(--text-secondary)", fontSize: "var(--type-meta-size)" };
+const text = {
+  margin: 0,
+  color: "var(--text-secondary)",
+  fontSize: "var(--type-meta-size)",
+};
 
 export const Horizontal: Story = {
   render: (args) => (

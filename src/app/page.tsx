@@ -1,4 +1,11 @@
-import { ArrowBigUp, Clock, Feather, Keyboard, MessageSquare, Moon } from "lucide-react";
+import {
+  ArrowBigUp,
+  Clock,
+  Feather,
+  Keyboard,
+  MessageSquare,
+  Moon,
+} from "lucide-react";
 
 import { Badge } from "@/components/badge";
 import { Button } from "@/components/button";
@@ -50,7 +57,8 @@ export default function Home() {
         </div>
 
         <p className={styles.hint}>
-          Press <Kbd>J</Kbd> and <Kbd>K</Kbd> to move between stories, <Kbd>?</Kbd> for all shortcuts.
+          Press <Kbd>J</Kbd> and <Kbd>K</Kbd> to move between stories,{" "}
+          <Kbd>?</Kbd> for all shortcuts.
         </p>
       </section>
     </main>

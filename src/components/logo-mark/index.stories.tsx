@@ -15,7 +15,9 @@ export const Default: Story = {};
 
 export const Sizes: Story = {
   render: () => (
-    <div style={{ display: "flex", alignItems: "flex-end", gap: "var(--space-6)" }}>
+    <div
+      style={{ display: "flex", alignItems: "flex-end", gap: "var(--space-6)" }}
+    >
       <LogoMark size={64} title="Orange" />
       <LogoMark size={48} />
       <LogoMark size={32} />

@@ -16,12 +16,21 @@ const meta = {
     children: <Button>Hover or focus me</Button>,
   },
   argTypes: {
-    side: { control: "inline-radio", options: ["top", "bottom", "left", "right"] },
+    side: {
+      control: "inline-radio",
+      options: ["top", "bottom", "left", "right"],
+    },
     children: { control: false },
   },
   decorators: [
     (Story) => (
-      <div style={{ padding: "var(--space-12)", display: "flex", justifyContent: "center" }}>
+      <div
+        style={{
+          padding: "var(--space-12)",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
         <Story />
       </div>
     ),
@@ -44,7 +53,14 @@ export const Open: Story = {
     shortcut: "T",
     side: "right",
     open: true,
-    children: <IconButton icon={Sun} label="Switch to dark theme" variant="secondary" tooltip={false} />,
+    children: (
+      <IconButton
+        icon={Sun}
+        label="Switch to dark theme"
+        variant="secondary"
+        tooltip={false}
+      />
+    ),
   },
 };
 

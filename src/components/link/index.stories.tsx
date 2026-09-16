@@ -5,8 +5,15 @@ import { Link } from "./index";
 const meta = {
   title: "Components/Link",
   component: Link,
-  args: { href: "/", children: "original discussion", variant: "inline", external: false },
-  argTypes: { variant: { control: "inline-radio", options: ["inline", "user", "quiet"] } },
+  args: {
+    href: "/",
+    children: "original discussion",
+    variant: "inline",
+    external: false,
+  },
+  argTypes: {
+    variant: { control: "inline-radio", options: ["inline", "user", "quiet"] },
+  },
 } satisfies Meta<typeof Link>;
 
 export default meta;
@@ -27,10 +34,15 @@ export const Inline: Story = {
   ),
 };
 
-export const User: Story = { args: { variant: "user", children: "binarytale" } };
+export const User: Story = {
+  args: { variant: "user", children: "binarytale" },
+};
 
 export const Quiet: Story = {
-  args: { variant: "quiet", children: "The exodus of China’s wealthy to Japan" },
+  args: {
+    variant: "quiet",
+    children: "The exodus of China’s wealthy to Japan",
+  },
   render: (args) => (
     <p className="type-story-list">
       <Link {...args} />

@@ -10,7 +10,8 @@
   --ease-in-out: cubic-bezier(0.4, 0.1, 0.25, 1);
   --ease-linear: linear;
   --transition-color:
-    color var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
     border-color var(--dur-fast) var(--ease-out);
 }
 

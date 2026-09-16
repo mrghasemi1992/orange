@@ -7,7 +7,10 @@ import "../src/app/globals.css";
 const withAppShell: Decorator = (Story, context) => {
   const root = document.documentElement;
   root.classList.add(...fontVariables.split(" "));
-  root.setAttribute("data-theme", context.globals.theme === "dark" ? "dark" : "light");
+  root.setAttribute(
+    "data-theme",
+    context.globals.theme === "dark" ? "dark" : "light",
+  );
   return <Story />;
 };
 

@@ -1,5 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { ArrowLeft, ExternalLink, Eye, Keyboard, Moon, Search } from "lucide-react";
+import {
+  ArrowLeft,
+  ExternalLink,
+  Eye,
+  Keyboard,
+  Moon,
+  Search,
+} from "lucide-react";
 
 import { IconButton } from "./index";
 
@@ -17,9 +24,15 @@ const meta = {
   },
   argTypes: {
     icon: { control: false },
-    variant: { control: "inline-radio", options: ["ghost", "secondary", "accent"] },
+    variant: {
+      control: "inline-radio",
+      options: ["ghost", "secondary", "accent"],
+    },
     size: { control: "inline-radio", options: ["sm", "md"] },
-    tooltipSide: { control: "inline-radio", options: ["top", "bottom", "left", "right"] },
+    tooltipSide: {
+      control: "inline-radio",
+      options: ["top", "bottom", "left", "right"],
+    },
   },
   decorators: [
     (Story) => (
@@ -33,19 +46,31 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const row = { display: "flex", alignItems: "center", gap: "var(--space-3)" } as const;
+const row = {
+  display: "flex",
+  alignItems: "center",
+  gap: "var(--space-3)",
+} as const;
 
 export const Ghost: Story = {};
 
 export const WithShortcut: Story = { args: { shortcut: "T" } };
 
-export const Secondary: Story = { args: { icon: Search, label: "Search", variant: "secondary" } };
+export const Secondary: Story = {
+  args: { icon: Search, label: "Search", variant: "secondary" },
+};
 
-export const Accent: Story = { args: { icon: Eye, label: "Show", variant: "accent" } };
+export const Accent: Story = {
+  args: { icon: Eye, label: "Show", variant: "accent" },
+};
 
-export const Small: Story = { args: { icon: ArrowLeft, label: "Back", size: "sm" } };
+export const Small: Story = {
+  args: { icon: ArrowLeft, label: "Back", size: "sm" },
+};
 
-export const AsLink: Story = { args: { icon: ExternalLink, label: "Open original", href: "/" } };
+export const AsLink: Story = {
+  args: { icon: ExternalLink, label: "Open original", href: "/" },
+};
 
 export const Disabled: Story = {
   render: () => (

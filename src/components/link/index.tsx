@@ -28,7 +28,13 @@ export function Link({
 
   if (external) {
     return (
-      <a className={classes} href={href} target="_blank" rel="noreferrer noopener" {...rest}>
+      <a
+        className={classes}
+        href={href}
+        target="_blank"
+        rel="noreferrer noopener"
+        {...rest}
+      >
         {children}
         <ExternalLink className={styles.externalIcon} />
       </a>

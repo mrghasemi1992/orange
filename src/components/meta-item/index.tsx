@@ -30,7 +30,10 @@ export function MetaItem({
   ...rest
 }: MetaItemProps) {
   return (
-    <span className={cx(styles.root, styles[tone], wrap && styles.wrap, className)} {...rest}>
+    <span
+      className={cx(styles.root, styles[tone], wrap && styles.wrap, className)}
+      {...rest}
+    >
       {Icon ? <Icon className={styles.icon} /> : null}
       <span className={styles.value}>
         {prefix ? `${prefix} ` : null}

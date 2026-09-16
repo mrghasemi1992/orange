@@ -6,7 +6,12 @@ import { MetaItem } from "./index";
 const meta = {
   title: "Components/Meta item",
   component: MetaItem,
-  args: { icon: ArrowBigUp, children: "986 points", tone: "muted", wrap: false },
+  args: {
+    icon: ArrowBigUp,
+    children: "986 points",
+    tone: "muted",
+    wrap: false,
+  },
   argTypes: {
     icon: { control: false },
     tone: { control: "inline-radio", options: ["muted", "strong", "accent"] },
@@ -26,11 +31,15 @@ export const Time: Story = {
   args: { icon: Clock, title: "12 Mar 2025, 09:41", children: "1 year ago" },
 };
 
-export const Comments: Story = { args: { icon: MessageSquare, children: "0 comments" } };
+export const Comments: Story = {
+  args: { icon: MessageSquare, children: "0 comments" },
+};
 
 export const Tones: Story = {
   render: () => (
-    <div style={{ display: "flex", flexWrap: "wrap", columnGap: "var(--space-4)" }}>
+    <div
+      style={{ display: "flex", flexWrap: "wrap", columnGap: "var(--space-4)" }}
+    >
       <MetaItem icon={ArrowBigUp}>muted</MetaItem>
       <MetaItem icon={ArrowBigUp} tone="strong">
         strong

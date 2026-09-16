@@ -35,10 +35,16 @@ export function Tooltip({
     <BaseTooltip.Root open={open}>
       <BaseTooltip.Trigger delay={delay} render={children} />
       <BaseTooltip.Portal>
-        <BaseTooltip.Positioner side={side} sideOffset={SIDE_OFFSET} className={styles.positioner}>
+        <BaseTooltip.Positioner
+          side={side}
+          sideOffset={SIDE_OFFSET}
+          className={styles.positioner}
+        >
           <BaseTooltip.Popup className={styles.popup}>
             <span>{content}</span>
-            {shortcut ? <kbd className={styles.shortcut}>{shortcut}</kbd> : null}
+            {shortcut ? (
+              <kbd className={styles.shortcut}>{shortcut}</kbd>
+            ) : null}
           </BaseTooltip.Popup>
         </BaseTooltip.Positioner>
       </BaseTooltip.Portal>

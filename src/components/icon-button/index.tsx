@@ -7,7 +7,10 @@ import { cx } from "@/lib/cx";
 
 import styles from "./styles.module.css";
 
-type IconButtonProps = Omit<ComponentPropsWithoutRef<"button">, "children" | "aria-label"> & {
+type IconButtonProps = Omit<
+  ComponentPropsWithoutRef<"button">,
+  "children" | "aria-label"
+> & {
   icon: LucideIcon;
   /** Required accessible name. Also used as the tooltip text, so both always match. */
   label: string;
@@ -55,7 +58,13 @@ export function IconButton({
     );
   } else {
     control = (
-      <button className={classes} type={type} aria-label={label} disabled={disabled} {...rest}>
+      <button
+        className={classes}
+        type={type}
+        aria-label={label}
+        disabled={disabled}
+        {...rest}
+      >
         {icon}
       </button>
     );
