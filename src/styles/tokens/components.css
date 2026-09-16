@@ -57,6 +57,9 @@
   --link-external-gap: 3px;
   --link-external-shift: -0.1em;
 
+  /* Divider */
+  --divider-vertical-min-height: 1em;
+
   /* Skeleton */
   --skeleton-line-height: 0.8125rem;
   --skeleton-title-height: 1.125rem;

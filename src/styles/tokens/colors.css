@@ -1,6 +1,7 @@
 /* Color tokens: base palette plus semantic aliases. Light is the default; dark applies on [data-theme="dark"]. */
 
-:root {
+:root,
+[data-theme="light"] {
   /* Orange ramp: the fruit. Vivid, never clay. */
   --orange-50: #fff4ec;
   --orange-100: #ffe5d3;

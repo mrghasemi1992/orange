@@ -1,6 +1,7 @@
 /* Shadow tokens. Subtle only; depth mostly comes from borders. */
 
-:root {
+:root,
+[data-theme="light"] {
   --shadow-xs: 0 1px 1px rgb(26 25 23 / 4%);
   --shadow-sm: 0 1px 2px rgb(26 25 23 / 6%), 0 1px 1px rgb(26 25 23 / 4%);
   --shadow-md: 0 4px 10px -2px rgb(26 25 23 / 8%), 0 1px 2px rgb(26 25 23 / 5%);
