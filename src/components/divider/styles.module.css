@@ -1,0 +1,44 @@
+.root {
+  flex: none;
+  border: 0;
+  background: var(--border);
+}
+
+.horizontal {
+  width: 100%;
+  height: var(--border-width);
+}
+
+.vertical {
+  align-self: stretch;
+  width: var(--border-width);
+  min-height: 1em;
+}
+
+.none {
+  margin: 0;
+}
+
+.horizontal.tight {
+  margin: var(--space-2) 0;
+}
+
+.horizontal.default {
+  margin: var(--space-4) 0;
+}
+
+.horizontal.loose {
+  margin: var(--space-8) 0;
+}
+
+.vertical.tight {
+  margin: 0 var(--space-2);
+}
+
+.vertical.default {
+  margin: 0 var(--space-3);
+}
+
+.vertical.loose {
+  margin: 0 var(--space-4);
+}
