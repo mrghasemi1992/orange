@@ -1,0 +1,46 @@
+/* Component tokens: sizes the design gives to specific parts, kept here so component CSS uses tokens only. */
+
+:root {
+  --opacity-disabled: 0.45;
+
+  /* Icons (lucide-react) */
+  --icon-stroke: 1.75;
+
+  /* Buttons and icon buttons */
+  --control-height-sm: 28px;
+  --control-height-md: 36px;
+  --control-padding-sm: 10px;
+  --control-padding-md: 14px;
+
+  /* Tooltip */
+  --tooltip-padding-y: 5px;
+  --tooltip-padding-x: var(--space-2);
+  --tooltip-max-width: 15rem;
+  --tooltip-chip-padding: 1px var(--space-1);
+
+  /* Keyboard key */
+  --kbd-height-sm: 18px;
+  --kbd-height-md: 22px;
+  --kbd-min-width: 1.5em;
+  --kbd-padding-x: 0.3em;
+  --kbd-baseline-shift: 0.05em;
+
+  /* Badge */
+  --badge-gap: var(--space-1);
+  --badge-padding-sm: 3px 5px;
+  --badge-padding-md: var(--space-1) 7px;
+  --badge-max-width: 14rem;
+
+  /* Meta item */
+  --meta-gap: 5px;
+  --meta-icon-opacity: 0.85;
+
+  /* Link */
+  --link-external-gap: 3px;
+  --link-external-shift: -0.1em;
+
+  /* Skeleton */
+  --skeleton-line-height: 0.8125rem;
+  --skeleton-title-height: 1.125rem;
+  --skeleton-block-height: 6rem;
+}

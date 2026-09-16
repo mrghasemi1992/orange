@@ -1,0 +1,20 @@
+/* Shadow tokens. Subtle only; depth mostly comes from borders. */
+
+:root {
+  --shadow-xs: 0 1px 1px rgb(26 25 23 / 4%);
+  --shadow-sm: 0 1px 2px rgb(26 25 23 / 6%), 0 1px 1px rgb(26 25 23 / 4%);
+  --shadow-md: 0 4px 10px -2px rgb(26 25 23 / 8%), 0 1px 2px rgb(26 25 23 / 5%);
+  --shadow-lg: 0 12px 28px -8px rgb(26 25 23 / 14%), 0 2px 6px -2px rgb(26 25 23 / 6%);
+  --shadow-focus:
+    0 0 0 var(--focus-ring-gap) var(--focus-ring-offset),
+    0 0 0 calc(var(--focus-ring-gap) + var(--focus-ring-width)) var(--focus-ring);
+  /* The pressed primary button: the only inner shadow in the system */
+  --shadow-pressed: inset 0 1px 2px rgb(0 0 0 / 14%);
+}
+
+[data-theme="dark"] {
+  --shadow-xs: 0 1px 1px rgb(0 0 0 / 30%);
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 40%), 0 0 0 1px rgb(255 255 255 / 3%);
+  --shadow-md: 0 6px 16px -4px rgb(0 0 0 / 55%), 0 0 0 1px rgb(255 255 255 / 4%);
+  --shadow-lg: 0 16px 36px -10px rgb(0 0 0 / 65%), 0 0 0 1px rgb(255 255 255 / 5%);
+}

@@ -1,0 +1,56 @@
+/* Element defaults built on the tokens. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: var(--weight-regular) 1rem / var(--line-height-base) var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: var(--underline-thickness);
+  text-underline-offset: var(--underline-offset);
+  transition: var(--transition-color);
+}
+
+a:hover {
+  color: var(--link-hover);
+  text-decoration-thickness: var(--underline-thickness-hover);
+}
+
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring);
+  outline-offset: var(--focus-ring-gap);
+  border-radius: var(--radius-xs);
+}
+
+::selection {
+  background: var(--accent-subtle-hover);
+  color: var(--text);
+}
+
+hr {
+  border: 0;
+  border-top: var(--border-width) solid var(--border);
+  margin: var(--space-6) 0;
+}
+
+code,
+kbd,
+samp {
+  font-family: var(--font-mono);
+}
