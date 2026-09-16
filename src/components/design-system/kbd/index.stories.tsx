@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Kbd } from "./index";
 
 const meta = {
-  title: "Components/Kbd",
+  title: "Design system/Kbd",
   component: Kbd,
   args: { children: "J", size: "md" },
   argTypes: { size: { control: "inline-radio", options: ["sm", "md"] } },

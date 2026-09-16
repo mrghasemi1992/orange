@@ -11,9 +11,9 @@ import {
 } from "lucide-react";
 import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 
-import { Badge } from "@/components/badge";
-import { Link } from "@/components/link";
-import { MetaItem } from "@/components/meta-item";
+import { Badge } from "@/components/design-system/badge";
+import { Link } from "@/components/design-system/link";
+import { MetaItem } from "@/components/design-system/meta-item";
 import type { LucideIcon } from "lucide-react";
 
 import styles from "./styles.module.css";

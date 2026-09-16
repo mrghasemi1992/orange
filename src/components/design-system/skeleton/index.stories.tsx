@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Skeleton } from "./index";
 
 const meta = {
-  title: "Components/Skeleton",
+  title: "Design system/Skeleton",
   component: Skeleton,
   args: { variant: "line", lines: 1 },
   argTypes: {

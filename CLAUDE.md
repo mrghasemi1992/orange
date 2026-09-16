@@ -64,7 +64,7 @@ Orange is a read-only Hacker News client with a modern reader UI. It is a portfo
 ## Conventions
 
 - **Folder layout:** the repo root is the `orange` folder. All app code lives in `orange/src` (the App Router is in `src/app`). Config files (`package.json`, `next.config`, `tsconfig.json`, ESLint config, `.storybook/`) stay at the repo root. Never create a nested project folder.
-- **Components:** one lowercase folder per component, containing:
+- **Components:** design system components (from the Claude Design handoff) live in `src/components/design-system/`. Feature components (sidebar, story row, and so on) live directly in `src/components/`. Storybook titles follow the folder: `Design system/<Name>`. Each component gets one lowercase folder, containing:
   - `index.tsx`
   - `styles.module.css`
   - `index.stories.tsx`
@@ -125,10 +125,11 @@ orange/                     # repo root
 │   │   ├── page.tsx        # temporary home page (replaced in Phase 1)
 │   │   ├── icon.svg        # favicon
 │   │   └── apple-icon.tsx  # app icon, rendered to PNG with next/og
-│   ├── components/         # one lowercase folder per component
-│   │   ├── badge/  button/  divider/  icon-button/  kbd/  link/
-│   │   ├── logo/  logo-mark/  meta-item/  skeleton/  tooltip/
-│   │   └── foundations/    # Storybook-only docs: tokens, type scale, real data
+│   ├── components/
+│   │   └── design-system/  # one lowercase folder per component
+│   │       ├── badge/  button/  divider/  icon-button/  kbd/  link/
+│   │       ├── logo/  logo-mark/  meta-item/  skeleton/  tooltip/
+│   │       └── foundations/  # Storybook-only docs: tokens, type scale, real data
 │   ├── lib/
 │   │   ├── cx.ts           # class name helper
 │   │   └── theme/          # theme helper, inline script, ThemeSync
@@ -153,6 +154,7 @@ Component folders contain `index.tsx`, `styles.module.css` and `index.stories.ts
 
 Planned folders inside `src/` (created when first needed):
 
+- `src/components/<feature>/`: feature components such as the sidebar (Phase 1+)
 - `src/lib/`: API clients and Zod schemas (Phase 2+)
 
 Tooling: pnpm, Turbopack (Next.js default), Prettier (default options) with `eslint-config-prettier`, React Compiler off.

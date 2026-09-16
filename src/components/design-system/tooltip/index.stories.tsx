@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Sun } from "lucide-react";
 
-import { Button } from "@/components/button";
-import { IconButton } from "@/components/icon-button";
+import { Button } from "@/components/design-system/button";
+import { IconButton } from "@/components/design-system/icon-button";
 
 import { Tooltip } from "./index";
 
 const meta = {
-  title: "Components/Tooltip",
+  title: "Design system/Tooltip",
   component: Tooltip,
   args: {
     content: "Open the original article",

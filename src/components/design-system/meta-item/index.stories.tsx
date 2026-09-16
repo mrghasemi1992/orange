@@ -4,7 +4,7 @@ import { ArrowBigUp, Clock, Feather, MessageSquare } from "lucide-react";
 import { MetaItem } from "./index";
 
 const meta = {
-  title: "Components/Meta item",
+  title: "Design system/Meta item",
   component: MetaItem,
   args: {
     icon: ArrowBigUp,

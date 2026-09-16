@@ -1,7 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
-import { Link } from "@/components/link";
+import { Link } from "@/components/design-system/link";
 import { cx } from "@/lib/cx";
 
 import styles from "./styles.module.css";

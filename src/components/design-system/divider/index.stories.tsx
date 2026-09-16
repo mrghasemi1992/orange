@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Divider } from "./index";
 
 const meta = {
-  title: "Components/Divider",
+  title: "Design system/Divider",
   component: Divider,
   args: { orientation: "horizontal", spacing: "default" },
   argTypes: {

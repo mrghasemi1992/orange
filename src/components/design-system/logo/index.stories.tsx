@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Logo } from "./index";
 
 const meta = {
-  title: "Brand/Logo",
+  title: "Design system/Logo",
   component: Logo,
   args: { size: "md" },
   argTypes: { size: { control: "inline-radio", options: ["sm", "md", "lg"] } },

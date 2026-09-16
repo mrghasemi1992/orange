@@ -7,14 +7,14 @@ import {
   Moon,
 } from "lucide-react";
 
-import { Badge } from "@/components/badge";
-import { Button } from "@/components/button";
-import { Divider } from "@/components/divider";
-import { IconButton } from "@/components/icon-button";
-import { Kbd } from "@/components/kbd";
-import { Link } from "@/components/link";
-import { Logo } from "@/components/logo";
-import { MetaItem } from "@/components/meta-item";
+import { Badge } from "@/components/design-system/badge";
+import { Button } from "@/components/design-system/button";
+import { Divider } from "@/components/design-system/divider";
+import { IconButton } from "@/components/design-system/icon-button";
+import { Kbd } from "@/components/design-system/kbd";
+import { Link } from "@/components/design-system/link";
+import { Logo } from "@/components/design-system/logo";
+import { MetaItem } from "@/components/design-system/meta-item";
 
 import styles from "./page.module.css";
 

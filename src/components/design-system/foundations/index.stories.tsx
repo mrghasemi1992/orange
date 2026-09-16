@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { ColorTokens, OtherTokens, RealData, TypeScale } from "./index";
 
 const meta = {
-  title: "Foundations",
+  title: "Design system/Foundations",
   parameters: { layout: "padded" },
 } satisfies Meta;
 

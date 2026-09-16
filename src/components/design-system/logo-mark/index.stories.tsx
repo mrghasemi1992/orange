@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { LogoMark } from "./index";
 
 const meta = {
-  title: "Brand/Logo mark",
+  title: "Design system/Logo mark",
   component: LogoMark,
   args: { size: 48, title: "Orange" },
 } satisfies Meta<typeof LogoMark>;

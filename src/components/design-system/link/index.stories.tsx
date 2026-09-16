@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Link } from "./index";
 
 const meta = {
-  title: "Components/Link",
+  title: "Design system/Link",
   component: Link,
   args: {
     href: "/",

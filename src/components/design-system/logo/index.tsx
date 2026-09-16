@@ -1,4 +1,4 @@
-import { LogoMark } from "@/components/logo-mark";
+import { LogoMark } from "@/components/design-system/logo-mark";
 
 import styles from "./styles.module.css";
 

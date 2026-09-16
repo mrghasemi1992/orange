@@ -4,7 +4,7 @@ import { ArrowLeft, ExternalLink, Search } from "lucide-react";
 import { Button } from "./index";
 
 const meta = {
-  title: "Components/Button",
+  title: "Design system/Button",
   component: Button,
   args: {
     children: "Load more",

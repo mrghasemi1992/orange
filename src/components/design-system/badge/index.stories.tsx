@@ -4,7 +4,7 @@ import { ChartColumn } from "lucide-react";
 import { Badge } from "./index";
 
 const meta = {
-  title: "Components/Badge",
+  title: "Design system/Badge",
   component: Badge,
   args: { children: "Ask HN", variant: "neutral", size: "md" },
   argTypes: {

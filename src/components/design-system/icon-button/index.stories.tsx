@@ -11,7 +11,7 @@ import {
 import { IconButton } from "./index";
 
 const meta = {
-  title: "Components/Icon button",
+  title: "Design system/Icon button",
   component: IconButton,
   args: {
     icon: Moon,
