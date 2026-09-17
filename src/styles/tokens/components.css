@@ -1,0 +1,67 @@
+/* Component tokens: sizes the design gives to specific parts, kept here so component CSS uses tokens only. */
+
+:root {
+  --opacity-disabled: 0.45;
+
+  /* Icons (lucide-react). Stroke 1.75, never above 2. */
+  --icon-stroke: 1.75;
+  --icon-size-xs: 11px; /* small badge */
+  --icon-size-sm: 12px; /* badge, external link */
+  --icon-size-meta: 14px; /* meta items, small buttons */
+  --icon-size-md: 16px; /* buttons, nav, small icon buttons */
+  --icon-size-lg: 18px; /* icon buttons */
+
+  /* Logo lockup: mark + wordmark */
+  --logo-mark-sm: 20px;
+  --logo-wordmark-sm: 16px;
+  --logo-gap-sm: 6px;
+  --logo-mark-md: 28px;
+  --logo-wordmark-md: 22px;
+  --logo-gap-md: 9px;
+  --logo-mark-lg: 44px;
+  --logo-wordmark-lg: 34px;
+  --logo-gap-lg: 14px;
+
+  /* Buttons and icon buttons */
+  --control-height-sm: 28px;
+  --control-height-md: 36px;
+  --control-padding-sm: 10px;
+  --control-padding-md: 14px;
+
+  /* Tooltip */
+  --tooltip-padding-y: 5px;
+  --tooltip-padding-x: var(--space-2);
+  --tooltip-max-width: 15rem;
+  --tooltip-chip-padding: 1px var(--space-1);
+  --tooltip-enter-scale: 0.97;
+  --z-tooltip: 40;
+
+  /* Keyboard key */
+  --kbd-height-sm: 18px;
+  --kbd-height-md: 22px;
+  --kbd-min-width: 1.5em;
+  --kbd-padding-x: 0.3em;
+  --kbd-baseline-shift: 0.05em;
+
+  /* Badge */
+  --badge-gap: var(--space-1);
+  --badge-padding-sm: 3px 5px;
+  --badge-padding-md: var(--space-1) 7px;
+  --badge-max-width: 14rem;
+
+  /* Meta item */
+  --meta-gap: 5px;
+  --meta-icon-opacity: 0.85;
+
+  /* Link */
+  --link-external-gap: 3px;
+  --link-external-shift: -0.1em;
+
+  /* Divider */
+  --divider-vertical-min-height: 1em;
+
+  /* Skeleton */
+  --skeleton-line-height: 0.8125rem;
+  --skeleton-title-height: 1.125rem;
+  --skeleton-block-height: 6rem;
+}

@@ -1,0 +1,232 @@
+.section + .section {
+  margin-top: var(--space-10);
+}
+
+.heading {
+  margin: 0 0 var(--space-1);
+  color: var(--text);
+  font-size: var(--type-label-size);
+  font-weight: var(--weight-semibold);
+}
+
+.subheading {
+  margin: var(--space-6) 0 var(--space-3);
+  color: var(--text-muted);
+  font-size: var(--type-meta-size);
+  font-weight: var(--weight-medium);
+}
+
+.lede {
+  max-width: var(--measure-narrow);
+  margin: 0 0 var(--space-5);
+  color: var(--text-muted);
+  font-size: var(--type-meta-size);
+}
+
+.caption {
+  color: var(--text-muted);
+  font-size: var(--type-xs-size);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Theme panes */
+
+.panes {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, calc(var(--content-max) / 2)), 1fr)
+  );
+  gap: var(--border-width);
+  overflow: hidden;
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-xl);
+  background: var(--border);
+}
+
+.pane {
+  min-width: 0;
+  padding: var(--space-5);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.paneTag {
+  display: block;
+  margin-bottom: var(--space-4);
+  color: var(--text-muted);
+  font-size: var(--type-xs-size);
+}
+
+/* Swatches */
+
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--space-20), 1fr));
+  gap: var(--space-2);
+}
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0-5);
+  font-size: var(--type-xs-size);
+}
+
+.swatchColor {
+  height: var(--space-10);
+  margin-bottom: var(--space-1);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.swatchName {
+  color: var(--text-secondary);
+}
+
+.swatchValue {
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.tokenList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.tokenRow {
+  display: grid;
+  grid-template-columns: var(--space-4) 3fr 2fr 3fr;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--type-xs-size);
+}
+
+.tokenDot {
+  flex: none;
+  width: var(--space-4);
+  height: var(--space-4);
+  border: var(--border-width) solid var(--border-strong);
+  border-radius: var(--radius-xs);
+}
+
+.tokenName {
+  overflow-wrap: anywhere;
+  color: var(--text);
+}
+
+.tokenValue {
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.tokenUse {
+  overflow: hidden;
+  color: var(--text-muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Type */
+
+.typeRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  border-bottom: var(--border-width) solid var(--border);
+}
+
+.typeSpec {
+  flex: 0 0 25%;
+  color: var(--text-muted);
+  font-size: var(--type-xs-size);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Spacing, radius, shadow */
+
+.scale {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-4);
+}
+
+.scaleItem,
+.boxItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.scaleBar {
+  display: block;
+  height: var(--space-8);
+  border: var(--border-width) solid var(--accent-border);
+  background: var(--accent-subtle);
+}
+
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+}
+
+.radiusBox {
+  width: var(--space-16);
+  height: var(--space-12);
+  border: var(--border-width) solid var(--border-strong);
+  background: var(--surface-sunken);
+}
+
+.shadowBox {
+  width: var(--space-20);
+  height: var(--space-12);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+/* Real data */
+
+.rows {
+  border-top: var(--border-width) solid var(--border);
+}
+
+.row {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4) 0;
+  border-bottom: var(--border-width) solid var(--border);
+}
+
+.rowIcon {
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
+  margin-top: var(--space-0-5);
+  color: var(--text-muted);
+}
+
+.rowBody {
+  min-width: 0;
+}
+
+.rowTitle {
+  margin-bottom: var(--space-2);
+}
+
+.rowBadge {
+  margin-right: var(--space-1-5);
+  vertical-align: var(--space-0-5);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--space-3);
+  row-gap: var(--space-1-5);
+}

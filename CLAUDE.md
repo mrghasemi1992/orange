@@ -53,20 +53,24 @@ Orange is a read-only Hacker News client with a modern reader UI. It is a portfo
 
 - **Brand:** name "Orange". The logo is an orange (the fruit).
 - **Look:** modern reader, calm and readable. Orange accent color.
-- **Fonts:** Noto Sans for the UI and reading text. A monospace font only for the "Orange" wordmark.
+- **Fonts:** Noto Sans for the UI and reading text. IBM Plex Mono only for the "Orange" wordmark and keyboard keys (`Kbd` and the shortcut chip in tooltips). Both load with `next/font`.
 - **Themes:** light and dark, both defined as tokens. No flash of the wrong theme on page load.
+  - Light tokens live on `:root` (and `[data-theme="light"]`), dark tokens on `[data-theme="dark"]`.
+  - An inline script in `<head>` sets `data-theme` on `<html>` before the first paint: the saved choice in `localStorage` (`orange-theme`), otherwise the OS setting.
+  - `src/lib/theme` holds the helper (`getTheme`, `setTheme`, `subscribeTheme`) and `ThemeSync`, which follows OS and other-tab changes.
+- **Icons:** lucide-react, stroke 1.75 (set globally in CSS), sized with the `--icon-size-*` tokens.
 - **Accessibility:** WCAG AA contrast in both themes, visible keyboard focus, respect `prefers-reduced-motion`.
 
 ## Conventions
 
 - **Folder layout:** the repo root is the `orange` folder. All app code lives in `orange/src` (the App Router is in `src/app`). Config files (`package.json`, `next.config`, `tsconfig.json`, ESLint config, `.storybook/`) stay at the repo root. Never create a nested project folder.
-- **Components:** one lowercase folder per component, containing:
+- **Components:** design system components (from the Claude Design handoff) live in `src/components/ui/`. Feature components (sidebar, story row, and so on) live directly in `src/components/`. Storybook titles follow the folder: `Design system/<Name>`. Each component gets one lowercase folder, containing:
   - `index.tsx`
   - `styles.module.css`
   - `index.stories.tsx`
   - `spec.test.tsx` (added later, when testing starts)
 - Use Server Components by default. Add `"use client"` only when a component needs state, effects, or browser APIs.
-- Use design tokens (CSS variables) for all colors, spacing, radius, fonts, and shadows. No hard-coded values in component CSS.
+- Use design tokens (CSS variables) for all colors, spacing, radius, fonts, and shadows. No hard-coded values in component CSS. Part-specific sizes from the design (control heights, badge padding, and so on) go in `src/styles/tokens/components.css`.
 - Folder structure inside `src/`: see the "Project structure" section below.
 
 ## Workflow
@@ -81,6 +85,7 @@ Orange is a read-only Hacker News client with a modern reader UI. It is a portfo
 Phase 0a (project setup) has no design step. It runs in Claude Code only.
 
 - **Git:** project setup (Phase 0a) is committed directly on `main`. Every step after that gets its own branch created from `main`.
+- **Approval before committing:** never commit without asking first. Show the files that changed and the proposed commit message(s), then wait for an explicit OK. An earlier approval does not cover later commits. The same applies to pushing.
 - **Branch names:** follow [Conventional Branch](https://conventionalbranch.org/): `<type>/<description>`.
   - Types: `feature/`, `bugfix/`, `hotfix/`, `release/`, `chore/`. Use these full forms, not `feat/` or `fix/`.
   - Only lowercase letters, numbers, and hyphens. No double hyphens, and no hyphen at the start or end.
@@ -96,7 +101,7 @@ Phase 0a (project setup) has no design step. It runs in Claude Code only.
 | # | Phase | Status |
 |---|-------|--------|
 | 0a | Project setup (on `main`): Next.js, TypeScript, ESLint, packages, Storybook install | Done |
-| 0b | Design system (branch `feature/phase-0-design-system`): logo, tokens, fonts, themes, base components, Storybook wiring, first Vercel deploy | Not started |
+| 0b | Design system (branch `feature/phase-0-design-system`): logo, tokens, fonts, themes, base components, Storybook wiring, first Vercel deploy | Done |
 | 1 | App shell: sidebar (Top, New, Best, Ask, Show, Jobs), theme toggle, mobile layout, loading/error/not-found pages | Not started |
 | 2 | Story lists: Zod schemas, story rows with type icons, load more on scroll | Not started |
 | 3 | Story page and comments: Algolia comment tree, HTML sanitizing, collapse, deleted/dead handling, polls, virtualization | Not started |
@@ -113,12 +118,27 @@ Phase 0a (project setup) has no design step. It runs in Claude Code only.
 orange/                     # repo root
 ├── .storybook/             # Storybook config (@storybook/nextjs-vite)
 │   ├── main.ts             # stories: src/**/*.stories.tsx
-│   └── preview.ts
+│   └── preview.tsx         # global CSS, next/font variables, light/dark toolbar
 ├── src/
-│   └── app/                # Next.js App Router
-│       ├── globals.css     # empty; filled by the design system (Phase 0b)
-│       ├── layout.tsx      # root layout
-│       └── page.tsx        # home page
+│   ├── app/                # Next.js App Router
+│   │   ├── globals.css     # imports the tokens, base styles and type helpers
+│   │   ├── layout.tsx      # root layout: fonts, inline theme script, ThemeSync
+│   │   ├── page.tsx        # temporary home page (replaced in Phase 1)
+│   │   ├── icon.svg        # favicon
+│   │   └── apple-icon.tsx  # app icon, rendered to PNG with next/og
+│   ├── components/
+│   │   └── ui/             # one lowercase folder per component
+│   │       ├── badge/  button/  divider/  icon-button/  kbd/  link/
+│   │       ├── logo/  logo-mark/  meta-item/  skeleton/  tooltip/
+│   │       └── foundations/  # Storybook-only docs: tokens, type scale, real data
+│   ├── lib/
+│   │   ├── cx.ts           # class name helper
+│   │   └── theme/          # theme helper, inline script, ThemeSync
+│   └── styles/
+│       ├── tokens/         # colors, typography, spacing, radius, shadows, motion, components
+│       ├── base.css        # element defaults
+│       ├── typography.css  # global .type-* helper classes
+│       └── fonts.ts        # next/font: Noto Sans, IBM Plex Mono
 ├── AGENTS.md               # generated and kept up to date by `next dev`
 ├── CLAUDE.md
 ├── eslint.config.mjs       # flat config: next, storybook, prettier
@@ -131,11 +151,12 @@ orange/                     # repo root
 └── tsconfig.json           # strict, `@/*` → `src/*`
 ```
 
+Component folders contain `index.tsx`, `styles.module.css` and `index.stories.tsx`. Only `tooltip` is a client component (Base UI); `icon-button` renders it but stays a Server Component.
+
 Planned folders inside `src/` (created when first needed):
 
-- `src/components/`: one lowercase folder per component (Phase 0b+)
-- `src/lib/`: API clients, Zod schemas, pure helpers (Phase 2+)
-- `src/styles/`: design tokens and theme CSS (Phase 0b)
+- `src/components/<feature>/`: feature components such as the sidebar (Phase 1+)
+- `src/lib/`: API clients and Zod schemas (Phase 2+)
 
 Tooling: pnpm, Turbopack (Next.js default), Prettier (default options) with `eslint-config-prettier`, React Compiler off.
 
