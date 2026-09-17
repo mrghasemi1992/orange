@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Sun } from "lucide-react";
 
-import { Button } from "@/components/design-system/button";
-import { IconButton } from "@/components/design-system/icon-button";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/ui/icon-button";
 
 import { Tooltip } from "./index";
 

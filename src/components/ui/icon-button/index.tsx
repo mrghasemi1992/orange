@@ -2,7 +2,7 @@ import NextLink from "next/link";
 import type { LucideIcon } from "lucide-react";
 import type { ComponentPropsWithoutRef } from "react";
 
-import { Tooltip } from "@/components/design-system/tooltip";
+import { Tooltip } from "@/components/ui/tooltip";
 import { cx } from "@/lib/cx";
 
 import styles from "./styles.module.css";
