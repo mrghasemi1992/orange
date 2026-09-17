@@ -85,6 +85,7 @@ Orange is a read-only Hacker News client with a modern reader UI. It is a portfo
 Phase 0a (project setup) has no design step. It runs in Claude Code only.
 
 - **Git:** project setup (Phase 0a) is committed directly on `main`. Every step after that gets its own branch created from `main`.
+- **Approval before committing:** never commit without asking first. Show the files that changed and the proposed commit message(s), then wait for an explicit OK. An earlier approval does not cover later commits. The same applies to pushing.
 - **Branch names:** follow [Conventional Branch](https://conventionalbranch.org/): `<type>/<description>`.
   - Types: `feature/`, `bugfix/`, `hotfix/`, `release/`, `chore/`. Use these full forms, not `feat/` or `fix/`.
   - Only lowercase letters, numbers, and hyphens. No double hyphens, and no hyphen at the start or end.
