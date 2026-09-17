@@ -8,6 +8,7 @@ Orange is a read-only Hacker News client with a modern reader UI. It is a portfo
 - Light and dark themes.
 - No login, voting, or commenting. The official HN API is read-only.
 - Data is fetched fresh when a page loads or refreshes. There are no live updates.
+- License: PolyForm Noncommercial 1.0.0 (`LICENSE`). Noncommercial use is free with credit; commercial use needs a paid license. The "Orange" name and logo are not licensed. Never call the project "open source".
 
 ## Features (full scope)
 
@@ -121,6 +122,7 @@ orange/                     # repo root
 │       └── page.tsx        # home page
 ├── AGENTS.md               # generated and kept up to date by `next dev`
 ├── CLAUDE.md
+├── LICENSE                 # PolyForm Noncommercial 1.0.0 + Required Notice lines
 ├── eslint.config.mjs       # flat config: next, storybook, prettier
 ├── next.config.ts
 ├── package.json
