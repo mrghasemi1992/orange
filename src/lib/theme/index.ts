@@ -6,7 +6,7 @@ export const THEME_ATTRIBUTE = "data-theme";
 
 const DARK_QUERY = "(prefers-color-scheme: dark)";
 
-export function isTheme(value: unknown): value is Theme {
+export function isThemeValue(value: unknown): value is Theme {
   return value === "light" || value === "dark";
 }
 
@@ -14,43 +14,43 @@ export function isTheme(value: unknown): value is Theme {
 export function getStoredTheme(): Theme | null {
   try {
     const value = window.localStorage.getItem(THEME_STORAGE_KEY);
-    return isTheme(value) ? value : null;
+    return isThemeValue(value) ? value : null;
   } catch {
     return null;
   }
 }
 
-export function getSystemTheme(): Theme {
+export function getOsPreferredTheme(): Theme {
   return window.matchMedia(DARK_QUERY).matches ? "dark" : "light";
 }
 
 /** The theme that should be shown right now. */
-export function resolveTheme(): Theme {
-  return getStoredTheme() ?? getSystemTheme();
+export function resolveThemeToDisplay(): Theme {
+  return getStoredTheme() ?? getOsPreferredTheme();
 }
 
 /** The theme currently applied to <html>. */
-export function getTheme(): Theme {
+export function getThemeFromDocument(): Theme {
   const value = document.documentElement.getAttribute(THEME_ATTRIBUTE);
-  return isTheme(value) ? value : resolveTheme();
+  return isThemeValue(value) ? value : resolveThemeToDisplay();
 }
 
-export function getThemePreference(): ThemePreference {
+export function getStoredThemePreference(): ThemePreference {
   return getStoredTheme() ?? "system";
 }
 
-export function applyTheme(theme: Theme): void {
+export function applyThemeOnDocument(theme: Theme): void {
   document.documentElement.setAttribute(THEME_ATTRIBUTE, theme);
 }
 
 const listeners = new Set<() => void>();
 
-function notify() {
+function notifyThemeListeners() {
   listeners.forEach((listener) => listener());
 }
 
 /** Save the choice ("system" clears it) and apply the resulting theme. */
-export function setTheme(preference: ThemePreference): void {
+export function setThemePreference(preference: ThemePreference): void {
   try {
     if (preference === "system") {
       window.localStorage.removeItem(THEME_STORAGE_KEY);
@@ -60,23 +60,25 @@ export function setTheme(preference: ThemePreference): void {
   } catch {
     // Storage can be unavailable (private mode, blocked site data). The theme still applies for this page.
   }
-  applyTheme(preference === "system" ? getSystemTheme() : preference);
-  notify();
+  applyThemeOnDocument(
+    preference === "system" ? getOsPreferredTheme() : preference,
+  );
+  notifyThemeListeners();
 }
 
 /**
  * Keep <html> in sync with the OS setting (while nothing is saved) and with changes made in other tabs.
  * The listener runs after every theme change. Returns an unsubscribe function.
- * Shaped for useSyncExternalStore: `useSyncExternalStore(subscribeTheme, getTheme, () => "light")`.
+ * Shaped for useSyncExternalStore: `useSyncExternalStore(subscribeToThemeChanges, getThemeFromDocument, () => "light")`.
  */
-export function subscribeTheme(listener: () => void): () => void {
+export function subscribeToThemeChanges(listener: () => void): () => void {
   listeners.add(listener);
 
   if (listeners.size === 1) {
     window
       .matchMedia(DARK_QUERY)
-      .addEventListener("change", handleExternalChange);
-    window.addEventListener("storage", handleStorage);
+      .addEventListener("change", syncThemeFromExternalChange);
+    window.addEventListener("storage", handleThemeStorageEvent);
   }
 
   return () => {
@@ -84,18 +86,18 @@ export function subscribeTheme(listener: () => void): () => void {
     if (listeners.size === 0) {
       window
         .matchMedia(DARK_QUERY)
-        .removeEventListener("change", handleExternalChange);
-      window.removeEventListener("storage", handleStorage);
+        .removeEventListener("change", syncThemeFromExternalChange);
+      window.removeEventListener("storage", handleThemeStorageEvent);
     }
   };
 }
 
-function handleExternalChange() {
-  applyTheme(resolveTheme());
-  notify();
+function syncThemeFromExternalChange() {
+  applyThemeOnDocument(resolveThemeToDisplay());
+  notifyThemeListeners();
 }
 
-function handleStorage(event: StorageEvent) {
+function handleThemeStorageEvent(event: StorageEvent) {
   if (event.key === null || event.key === THEME_STORAGE_KEY)
-    handleExternalChange();
+    syncThemeFromExternalChange();
 }

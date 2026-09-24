@@ -2,7 +2,11 @@
 
 import { useLayoutEffect } from "react";
 
-import { applyTheme, resolveTheme, subscribeTheme } from "./index";
+import {
+  applyThemeOnDocument,
+  resolveThemeToDisplay,
+  subscribeToThemeChanges,
+} from "./index";
 
 /**
  * Renders nothing. Re-applies the theme after hydration (React's dev remount clears
@@ -10,8 +14,8 @@ import { applyTheme, resolveTheme, subscribeTheme } from "./index";
  */
 export function ThemeSync() {
   useLayoutEffect(() => {
-    applyTheme(resolveTheme());
-    return subscribeTheme(() => {});
+    applyThemeOnDocument(resolveThemeToDisplay());
+    return subscribeToThemeChanges(() => {});
   }, []);
 
   return null;

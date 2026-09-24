@@ -57,7 +57,7 @@ Orange is a read-only Hacker News client with a modern reader UI. It is a portfo
 - **Themes:** light and dark, both defined as tokens. No flash of the wrong theme on page load.
   - Light tokens live on `:root` (and `[data-theme="light"]`), dark tokens on `[data-theme="dark"]`.
   - An inline script in `<head>` sets `data-theme` on `<html>` before the first paint: the saved choice in `localStorage` (`orange-theme`), otherwise the OS setting.
-  - `src/lib/theme` holds the helper (`getTheme`, `setTheme`, `subscribeTheme`) and `ThemeSync`, which follows OS and other-tab changes.
+  - `src/lib/theme` holds the helper (`getThemeFromDocument`, `setThemePreference`, `subscribeToThemeChanges`) and `ThemeSync`, which follows OS and other-tab changes.
 - **Icons:** lucide-react, stroke 1.75 (set globally in CSS), sized with the `--icon-size-*` tokens. Import the `*Icon` export (`SearchIcon`, not `Search`) so icon names never clash with other identifiers or text.
 - **Accessibility:** WCAG AA contrast in both themes, visible keyboard focus, respect `prefers-reduced-motion`.
 
