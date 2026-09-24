@@ -6,7 +6,7 @@ import {
   applyThemeOnDocument,
   resolveThemeToDisplay,
   subscribeToThemeChanges,
-} from "./index";
+} from "@/utils/theme";
 
 /**
  * Renders nothing. Re-applies the theme after hydration (React's dev remount clears

@@ -3,6 +3,21 @@
 :root {
   --opacity-disabled: 0.45;
 
+  /* App shell. The breakpoint is --nav-mobile in src/styles/media.css. */
+  --sidebar-width: 15rem;
+  --topbar-height: 3.5rem;
+  --drawer-width: min(18rem, 85vw);
+  --nav-item-height: 2.25rem;
+  --nav-item-padding-x: 10px;
+  --nav-item-gap: 10px;
+  --sidebar-padding: var(--space-4) var(--space-3);
+  --sidebar-footer-padding: var(--space-3) var(--space-1) 0;
+  --z-topbar: 10;
+  --z-drawer: 30; /* below --z-tooltip, so the drawer's toggle tooltip shows */
+  --z-skip-link: 50;
+  /* --accent-text on --accent-subtle is about 4.3:1 in light, just under AA; one step deeper passes. */
+  --nav-active-text: var(--accent-text-hover);
+
   /* Icons (lucide-react). Stroke 1.75, never above 2. */
   --icon-stroke: 1.75;
   --icon-size-xs: 11px; /* small badge */
@@ -64,4 +79,12 @@
   --skeleton-line-height: 0.8125rem;
   --skeleton-title-height: 1.125rem;
   --skeleton-block-height: 6rem;
+
+  /* Story list skeleton (loading.tsx) */
+  --skeleton-page-title-width: 7.5rem;
+  --skeleton-page-title-height: 1.5rem;
+  --skeleton-page-description-width: 20rem;
+  --skeleton-row-gap: 14px;
+  --skeleton-row-icon: 2rem;
+  --skeleton-row-title-height: 0.9375rem;
 }

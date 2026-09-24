@@ -1,0 +1,9 @@
+/*
+ * Breakpoints. CSS variables don't work inside @media, so they are @custom-media rules.
+ * postcss.config.mjs injects this file into every CSS file: use `@media (--nav-mobile)`.
+ * JavaScript (matchMedia) reads the same values from src/constants/media.ts; keep them in sync.
+ */
+
+/* Below this width the sidebar becomes a top bar with a drawer. */
+@custom-media --nav-mobile (width < 48rem);
+@custom-media --nav-desktop (width >= 48rem);

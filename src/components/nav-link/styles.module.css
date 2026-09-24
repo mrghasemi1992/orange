@@ -1,0 +1,36 @@
+.root {
+  display: flex;
+  align-items: center;
+  gap: var(--nav-item-gap);
+  height: var(--nav-item-height);
+  padding: 0 var(--nav-item-padding-x);
+  border-radius: var(--radius-lg);
+  color: var(--text-secondary);
+  font: var(--type-label-weight) var(--type-label-size) / var(--type-label-line)
+    var(--font-sans);
+  text-decoration: none;
+  transition:
+    var(--transition-color),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.root svg {
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+}
+
+.root:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.root[aria-current="page"] {
+  background: var(--accent-subtle);
+  color: var(--nav-active-text);
+}
+
+.root:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}

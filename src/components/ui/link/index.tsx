@@ -2,7 +2,7 @@ import NextLink from "next/link";
 import { ExternalLinkIcon } from "lucide-react";
 import type { ComponentProps, ReactNode } from "react";
 
-import { cx } from "@/lib/cx";
+import { cx } from "@/utils/cx";
 
 import styles from "./styles.module.css";
 

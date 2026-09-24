@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 
-import { themeScript } from "@/lib/theme/script";
-import { ThemeSync } from "@/lib/theme/theme-sync";
+import { AppShell } from "@/components/app-shell";
+import { ThemeSync } from "@/components/theme-sync";
+import { SITE_DESCRIPTION, SITE_NAME } from "@/constants/site";
+import { THEME_SCRIPT } from "@/constants/theme";
 import { fontVariables } from "@/styles/fonts";
 
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Orange",
-  description: "A modern Hacker News reader",
+  title: { default: SITE_NAME, template: `%s | ${SITE_NAME}` },
+  description: SITE_DESCRIPTION,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -16,11 +18,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     // The inline theme script sets data-theme before hydration, so React must accept the DOM value.
     <html lang="en" className={fontVariables} suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
       <body>
         <ThemeSync />
-        {children}
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

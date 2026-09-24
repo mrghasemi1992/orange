@@ -1,14 +1,15 @@
 import NextLink from "next/link";
 import type { LucideIcon } from "lucide-react";
-import type { ComponentProps } from "react";
+import { isValidElement, type ComponentProps, type ReactElement } from "react";
 
 import { Tooltip } from "@/components/ui/tooltip";
-import { cx } from "@/lib/cx";
+import { cx } from "@/utils/cx";
 
 import styles from "./styles.module.css";
 
 type IconButtonBaseProps = {
-  icon: LucideIcon;
+  /** A lucide icon, or a ready element that sizes itself (for example two icons swapped by CSS). */
+  icon: LucideIcon | ReactElement;
   /** Required accessible name. Also used as the tooltip text, so both always match. */
   label: string;
   variant?: "ghost" | "secondary" | "accent";
@@ -50,7 +51,7 @@ export function IconButton({
   ...rest
 }: IconButtonProps) {
   const classes = cx(styles.root, styles[variant], styles[size], className);
-  const icon = <Icon className={styles.icon} />;
+  const icon = isValidElement(Icon) ? Icon : <Icon className={styles.icon} />;
 
   let element;
   if (rest.href !== undefined) {
