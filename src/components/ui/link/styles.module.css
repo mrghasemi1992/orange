@@ -1,0 +1,63 @@
+.root {
+  border-radius: var(--radius-xs);
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    var(--transition-color),
+    text-decoration-color var(--dur-fast) var(--ease-out);
+}
+
+.root:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring);
+  outline-offset: var(--focus-ring-gap);
+}
+
+.inline {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-border);
+  text-decoration-thickness: var(--underline-thickness);
+  text-underline-offset: var(--underline-offset);
+}
+
+.inline:hover {
+  color: var(--link-hover);
+  text-decoration-color: currentColor;
+  text-decoration-thickness: var(--underline-thickness);
+}
+
+.user {
+  color: var(--accent-text);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+}
+
+.user:hover {
+  color: var(--accent-text-hover);
+  text-decoration: underline;
+  text-decoration-thickness: var(--underline-thickness);
+  text-underline-offset: var(--underline-offset);
+}
+
+.quiet {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Visited story titles drop to secondary ink. */
+.quiet:visited {
+  color: var(--text-secondary);
+}
+
+.quiet:hover {
+  color: var(--accent-text);
+  text-decoration: none;
+}
+
+.externalIcon {
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+  margin-left: var(--link-external-gap);
+  color: var(--text-muted);
+  vertical-align: var(--link-external-shift);
+}

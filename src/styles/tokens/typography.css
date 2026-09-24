@@ -1,0 +1,65 @@
+/* Typography tokens. Noto Sans for UI and reading; IBM Plex Mono for the wordmark and keyboard keys. */
+
+:root {
+  /* --font-noto-sans and --font-plex-mono come from next/font (src/styles/fonts.ts). */
+  --font-sans:
+    var(--font-noto-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:
+    var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Page title: "New", "Ask" */
+  --type-page-title-size: 1.75rem;
+  --type-page-title-line: 2.125rem;
+  --type-page-title-weight: 600;
+  --type-page-title-tracking: -0.015em;
+
+  /* Story title on the story page */
+  --type-story-title-size: 1.6875rem;
+  --type-story-title-line: 2.125rem;
+  --type-story-title-weight: 600;
+  --type-story-title-tracking: -0.012em;
+
+  /* Story title in a list */
+  --type-story-list-size: 0.9375rem;
+  --type-story-list-line: 1.375rem;
+  --type-story-list-weight: 500;
+
+  /* Body / reading text: comments, post text */
+  --type-body-size: 1.0312rem;
+  --type-body-line: 1.75rem;
+  --type-body-weight: 400;
+
+  /* Section label / nav item / medium control text */
+  --type-label-size: 0.875rem;
+  --type-label-line: 1.25rem;
+  --type-label-weight: 500;
+
+  /* Meta: points, author, time, comments */
+  --type-meta-size: 0.8125rem;
+  --type-meta-line: 1.125rem;
+  --type-meta-weight: 400;
+
+  /* Small: badges, captions */
+  --type-small-size: 0.75rem;
+  --type-small-line: 1rem;
+  --type-small-weight: 500;
+
+  /* Extra small: small badges, small keys, tooltip shortcut chip */
+  --type-xs-size: 0.6875rem;
+
+  /* Wordmark */
+  --type-wordmark-weight: 600;
+  --type-wordmark-tracking: -0.02em;
+
+  --line-height-none: 1;
+  --line-height-tight: 1.25;
+  --line-height-base: 1.5;
+
+  --measure-reading: 68ch; /* ~72 characters max */
+  --measure-narrow: 52ch;
+}

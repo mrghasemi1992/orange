@@ -1,0 +1,109 @@
+/* Color tokens: base palette plus semantic aliases. Light is the default; dark applies on [data-theme="dark"]. */
+
+:root,
+[data-theme="light"] {
+  /* Orange ramp: the fruit. Vivid, never clay. */
+  --orange-50: #fff4ec;
+  --orange-100: #ffe5d3;
+  --orange-200: #ffc7a1;
+  --orange-300: #ffa76b;
+  --orange-400: #ff8a3d;
+  --orange-500: #ff6b18;
+  --orange-600: #e85800;
+  --orange-700: #c94e00;
+  --orange-800: #9e3d00;
+  --orange-900: #6b2a00;
+
+  /* Warm neutrals: quiet, paper-like */
+  --gray-0: #ffffff;
+  --gray-25: #fcfbfa;
+  --gray-50: #f7f6f4;
+  --gray-100: #efedea;
+  --gray-200: #e3e0dc;
+  --gray-300: #cdc9c3;
+  --gray-400: #a6a29b;
+  --gray-500: #7a756e;
+  --gray-600: #605c57;
+  --gray-700: #45423e;
+  --gray-800: #2a2825;
+  --gray-900: #1a1917;
+
+  /* Dark inks: near-black with a slight blue cast */
+  --ink-900: #0f1012;
+  --ink-850: #141518;
+  --ink-800: #17181b;
+  --ink-750: #1e2024;
+  --ink-700: #24272c;
+  --ink-600: #2b2f35;
+  --ink-500: #3a3f46;
+
+  /* Semantic, light theme */
+  --bg: var(--gray-0);
+  --bg-subtle: var(--gray-25);
+  --surface: var(--gray-0);
+  --surface-raised: var(--gray-0);
+  --surface-sunken: var(--gray-50);
+  --surface-hover: var(--gray-50);
+  --surface-active: var(--gray-100);
+  --border: var(--gray-200);
+  --border-strong: var(--gray-300);
+  --text: var(--gray-900);
+  --text-secondary: var(--gray-600);
+  --text-muted: var(--gray-500);
+  --text-on-accent: #2a1403;
+  --accent: var(--orange-500);
+  --accent-hover: var(--orange-600);
+  --accent-active: var(--orange-700);
+  --accent-text: var(--orange-700);
+  --accent-text-hover: var(--orange-800);
+  --accent-subtle: var(--orange-50);
+  --accent-subtle-hover: var(--orange-100);
+  --accent-border: var(--orange-200);
+  --focus-ring: var(--orange-600);
+  --focus-ring-offset: var(--gray-0);
+  --link: var(--orange-700);
+  --link-hover: var(--orange-800);
+  --skeleton: var(--gray-100);
+  --skeleton-sheen: var(--gray-50);
+  --overlay: rgb(26 25 23 / 40%);
+  --tooltip-bg: var(--gray-900);
+  --tooltip-text: var(--gray-25);
+  --tooltip-chip-bg: rgb(255 255 255 / 14%);
+
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: var(--ink-900);
+  --bg-subtle: var(--ink-850);
+  --surface: var(--ink-800);
+  --surface-raised: var(--ink-750);
+  --surface-sunken: var(--ink-850);
+  --surface-hover: var(--ink-750);
+  --surface-active: var(--ink-700);
+  --border: var(--ink-600);
+  --border-strong: var(--ink-500);
+  --text: #edebe8;
+  --text-secondary: #b3aea8;
+  --text-muted: #8e8983;
+  --text-on-accent: #2a1403;
+  --accent: var(--orange-500);
+  --accent-hover: var(--orange-400);
+  --accent-active: var(--orange-300);
+  --accent-text: #ff9457;
+  --accent-text-hover: var(--orange-300);
+  --accent-subtle: #2a1a10;
+  --accent-subtle-hover: #382113;
+  --accent-border: #4a2a15;
+  --focus-ring: var(--orange-400);
+  --focus-ring-offset: var(--ink-900);
+  --link: #ff9457;
+  --link-hover: var(--orange-300);
+  --skeleton: var(--ink-700);
+  --skeleton-sheen: var(--ink-600);
+  --overlay: rgb(0 0 0 / 60%);
+  --tooltip-bg: #2f3339;
+  --tooltip-text: #edebe8;
+
+  color-scheme: dark;
+}

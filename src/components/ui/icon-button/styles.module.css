@@ -1,0 +1,90 @@
+.root {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: var(--border-width) solid transparent;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  appearance: none;
+  transition:
+    var(--transition-color),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.root:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.icon {
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
+}
+
+/* Sizes */
+
+.sm {
+  width: var(--control-height-sm);
+  height: var(--control-height-sm);
+  border-radius: var(--radius-sm);
+}
+
+.sm .icon {
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+}
+
+.md {
+  width: var(--control-height-md);
+  height: var(--control-height-md);
+}
+
+/* Variants. Hover and press only apply while enabled. */
+
+.ghost:hover:not(:disabled, [aria-disabled="true"]) {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.ghost:active:not(:disabled, [aria-disabled="true"]) {
+  background: var(--surface-active);
+}
+
+.secondary {
+  border-color: var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-xs);
+}
+
+.secondary:hover:not(:disabled, [aria-disabled="true"]) {
+  border-color: var(--border-strong);
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.secondary:active:not(:disabled, [aria-disabled="true"]) {
+  background: var(--surface-active);
+}
+
+.accent {
+  background: var(--accent-subtle);
+  color: var(--accent-text);
+}
+
+.accent:hover:not(:disabled, [aria-disabled="true"]) {
+  background: var(--accent-subtle-hover);
+  color: var(--accent-text-hover);
+}
+
+/* Disabled */
+
+.root:disabled,
+.root[aria-disabled="true"] {
+  opacity: var(--opacity-disabled);
+  box-shadow: none;
+  cursor: not-allowed;
+}

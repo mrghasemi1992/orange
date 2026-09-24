@@ -1,0 +1,10 @@
+/* Radius tokens. Small parts get small radii; never one radius on everything. */
+
+:root {
+  --radius-xs: 3px; /* kbd, skeleton line, focus inner */
+  --radius-sm: 5px; /* badge, tooltip, small button */
+  --radius-md: 7px; /* button, icon button, input */
+  --radius-lg: 10px; /* card, sidebar item, menu */
+  --radius-xl: 14px; /* panel, modal */
+  --radius-full: 999px;
+}

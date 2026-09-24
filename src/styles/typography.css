@@ -1,0 +1,64 @@
+/* Global type helper classes from the design. Components prefer the tokens directly. */
+
+.type-page-title {
+  margin: 0;
+  color: var(--text);
+  font: var(--type-page-title-weight) var(--type-page-title-size) /
+    var(--type-page-title-line) var(--font-sans);
+  letter-spacing: var(--type-page-title-tracking);
+  text-wrap: pretty;
+}
+
+.type-story-title {
+  margin: 0;
+  color: var(--text);
+  font: var(--type-story-title-weight) var(--type-story-title-size) /
+    var(--type-story-title-line) var(--font-sans);
+  letter-spacing: var(--type-story-title-tracking);
+  text-wrap: pretty;
+}
+
+.type-story-list {
+  margin: 0;
+  color: var(--text);
+  font: var(--type-story-list-weight) var(--type-story-list-size) /
+    var(--type-story-list-line) var(--font-sans);
+  text-wrap: pretty;
+}
+
+.type-body {
+  max-width: var(--measure-reading);
+  color: var(--text);
+  font: var(--type-body-weight) var(--type-body-size) / var(--type-body-line)
+    var(--font-sans);
+  text-wrap: pretty;
+}
+
+.type-label {
+  color: var(--text);
+  font: var(--type-label-weight) var(--type-label-size) / var(--type-label-line)
+    var(--font-sans);
+}
+
+.type-meta {
+  color: var(--text-muted);
+  font: var(--type-meta-weight) var(--type-meta-size) / var(--type-meta-line)
+    var(--font-sans);
+  font-variant-numeric: tabular-nums;
+}
+
+.type-small {
+  color: var(--text-muted);
+  font: var(--type-small-weight) var(--type-small-size) / var(--type-small-line)
+    var(--font-sans);
+}
+
+.type-wordmark {
+  font-family: var(--font-mono);
+  font-weight: var(--type-wordmark-weight);
+  letter-spacing: var(--type-wordmark-tracking);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}

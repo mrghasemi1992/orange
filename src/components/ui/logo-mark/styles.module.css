@@ -1,0 +1,12 @@
+.root {
+  display: block;
+  flex: none;
+}
+
+.fruit {
+  fill: var(--orange-500);
+}
+
+.leaf {
+  fill: var(--orange-700);
+}
