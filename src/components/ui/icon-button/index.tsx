@@ -3,7 +3,7 @@ import type { LucideIcon } from "lucide-react";
 import type { ComponentProps } from "react";
 
 import { Tooltip } from "@/components/ui/tooltip";
-import { cx } from "@/lib/cx";
+import { cx } from "@/utils/cx";
 
 import styles from "./styles.module.css";
 

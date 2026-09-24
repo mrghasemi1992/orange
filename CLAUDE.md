@@ -58,7 +58,7 @@ Orange is a read-only Hacker News client with a modern reader UI. It is a portfo
 - **Themes:** light and dark, both defined as tokens. No flash of the wrong theme on page load.
   - Light tokens live on `:root` (and `[data-theme="light"]`), dark tokens on `[data-theme="dark"]`.
   - An inline script in `<head>` sets `data-theme` on `<html>` before the first paint: the saved choice in `localStorage` (`orange-theme`), otherwise the OS setting.
-  - `src/lib/theme` holds the helper (`getThemeFromDocument`, `setThemePreference`, `subscribeToThemeChanges`) and `ThemeSync`, which follows OS and other-tab changes.
+  - `src/utils/theme.ts` holds the theme functions (`getThemeFromDocument`, `setThemePreference`, `subscribeToThemeChanges`). `src/constants/theme.ts` holds the storage key and the inline script (`THEME_SCRIPT`). `src/components/theme-sync/` holds `ThemeSync`, which follows OS and other-tab changes.
 - **Icons:** lucide-react, stroke 1.75 (set globally in CSS), sized with the `--icon-size-*` tokens. Import the `*Icon` export (`SearchIcon`, not `Search`) so icon names never clash with other identifiers or text.
 - **Accessibility:** WCAG AA contrast in both themes, visible keyboard focus, respect `prefers-reduced-motion`.
 
@@ -73,10 +73,12 @@ Orange is a read-only Hacker News client with a modern reader UI. It is a portfo
 - **Props types:** extend native element props with `ComponentProps<"button">` (React 19), not `ComponentPropsWithoutRef`. `ref` is a normal prop, so components pass it through with `...rest` and need no `forwardRef`. A component that can render a button or a link (`Button`, `IconButton`) is typed as a union and passes `...rest` to both.
 - Use Server Components by default. Add `"use client"` only when a component needs state, effects, or browser APIs.
 - Use design tokens (CSS variables) for all colors, spacing, radius, fonts, and shadows. No hard-coded values in component CSS. Part-specific sizes from the design (control heights, badge padding, and so on) go in `src/styles/tokens/components.css`.
-- **Types, constants and helpers** go in their own top-level folders, one file per topic (for example `sections.ts` in each):
+- **Types, constants, utils and helpers** go in their own top-level folders, one file per topic (for example `sections.ts`):
   - `src/types/`: shared TypeScript types
-  - `src/constants/`: fixed data and config (for example `SECTIONS`)
-  - `src/helpers/`: small pure functions that work on that data (for example `getSection`)
+  - `src/constants/`: fixed data and config (for example `SECTIONS`, the theme storage key)
+  - `src/utils/`: generic functions that could be copied into another project as they are (for example `cx`, the theme functions)
+  - `src/helpers/`: functions specific to Orange and its data (for example `getSection`)
+  - Rule of thumb: if a function would work unchanged in another project, it's a util. If it knows about Orange (its sections, HN data), it's a helper.
 - Folder structure inside `src/`: see the "Project structure" section below.
 
 ## Workflow
@@ -133,16 +135,22 @@ orange/                     # repo root
 │   │   ├── icon.svg        # favicon
 │   │   └── apple-icon.tsx  # app icon, rendered to PNG with next/og
 │   ├── components/
+│   │   ├── theme-sync/     # ThemeSync: renders nothing, only index.tsx
 │   │   └── ui/             # one lowercase folder per component
 │   │       ├── badge/  button/  divider/  icon-button/  kbd/  link/
 │   │       ├── logo/  logo-mark/  meta-item/  skeleton/  tooltip/
 │   │       └── foundations/  # Storybook-only docs: tokens, type scale, real data
-│   ├── constants/          # fixed data and config (sections.ts: SECTIONS)
-│   ├── helpers/            # pure functions on that data (sections.ts: getSection)
-│   ├── types/              # shared types (sections.ts: Section, SectionId)
-│   ├── lib/
+│   ├── constants/          # fixed data and config
+│   │   ├── sections.ts     # SECTIONS: label, href, description, icon
+│   │   └── theme.ts        # storage key, data-theme attribute, THEME_SCRIPT
+│   ├── helpers/            # functions specific to Orange
+│   │   └── sections.ts     # getSection, getSectionMetadata
+│   ├── types/              # shared types
+│   │   ├── sections.ts     # Section, SectionId
+│   │   └── theme.ts        # Theme, ThemePreference
+│   ├── utils/              # generic functions, reusable in other projects
 │   │   ├── cx.ts           # class name helper
-│   │   └── theme/          # theme helper, inline script, ThemeSync
+│   │   └── theme.ts        # read, save and follow the theme
 │   └── styles/
 │       ├── tokens/         # colors, typography, spacing, radius, shadows, motion, components
 │       ├── base.css        # element defaults
@@ -161,7 +169,7 @@ orange/                     # repo root
 └── tsconfig.json           # strict, `@/*` → `src/*`
 ```
 
-Component folders contain `index.tsx`, `styles.module.css` and `index.stories.tsx`. Only `tooltip` is a client component (Base UI); `icon-button` renders it but stays a Server Component.
+Component folders contain `index.tsx`, `styles.module.css` and `index.stories.tsx`. A component that renders nothing (`theme-sync`) has only `index.tsx`. Only `tooltip` is a client component (Base UI); `icon-button` renders it but stays a Server Component.
 
 Planned folders inside `src/` (created when first needed):
 

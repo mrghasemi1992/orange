@@ -1,10 +1,9 @@
-export type Theme = "light" | "dark";
-export type ThemePreference = Theme | "system";
-
-export const THEME_STORAGE_KEY = "orange-theme";
-export const THEME_ATTRIBUTE = "data-theme";
-
-const DARK_QUERY = "(prefers-color-scheme: dark)";
+import {
+  DARK_THEME_QUERY,
+  THEME_ATTRIBUTE,
+  THEME_STORAGE_KEY,
+} from "@/constants/theme";
+import type { Theme, ThemePreference } from "@/types/theme";
 
 export function isThemeValue(value: unknown): value is Theme {
   return value === "light" || value === "dark";
@@ -21,7 +20,7 @@ export function getStoredTheme(): Theme | null {
 }
 
 export function getOsPreferredTheme(): Theme {
-  return window.matchMedia(DARK_QUERY).matches ? "dark" : "light";
+  return window.matchMedia(DARK_THEME_QUERY).matches ? "dark" : "light";
 }
 
 /** The theme that should be shown right now. */
@@ -76,7 +75,7 @@ export function subscribeToThemeChanges(listener: () => void): () => void {
 
   if (listeners.size === 1) {
     window
-      .matchMedia(DARK_QUERY)
+      .matchMedia(DARK_THEME_QUERY)
       .addEventListener("change", syncThemeFromExternalChange);
     window.addEventListener("storage", handleThemeStorageEvent);
   }
@@ -85,7 +84,7 @@ export function subscribeToThemeChanges(listener: () => void): () => void {
     listeners.delete(listener);
     if (listeners.size === 0) {
       window
-        .matchMedia(DARK_QUERY)
+        .matchMedia(DARK_THEME_QUERY)
         .removeEventListener("change", syncThemeFromExternalChange);
       window.removeEventListener("storage", handleThemeStorageEvent);
     }

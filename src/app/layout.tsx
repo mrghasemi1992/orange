@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import { themeScript } from "@/lib/theme/script";
-import { ThemeSync } from "@/lib/theme/theme-sync";
+import { ThemeSync } from "@/components/theme-sync";
+import { THEME_SCRIPT } from "@/constants/theme";
 import { fontVariables } from "@/styles/fonts";
 
 import "./globals.css";
@@ -16,7 +16,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     // The inline theme script sets data-theme before hydration, so React must accept the DOM value.
     <html lang="en" className={fontVariables} suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
       <body>
         <ThemeSync />
