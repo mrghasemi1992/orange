@@ -52,12 +52,12 @@ export function IconButton({
   const classes = cx(styles.root, styles[variant], styles[size], className);
   const icon = <Icon className={styles.icon} />;
 
-  let control;
+  let element;
   if (rest.href !== undefined) {
     const { href, ...anchorProps } = rest as AnchorProps & { href: string };
 
     // A disabled link has no href, so it cannot be followed or focused.
-    control = disabled ? (
+    element = disabled ? (
       <a
         className={classes}
         aria-label={label}
@@ -79,7 +79,7 @@ export function IconButton({
   } else {
     const { type = "button", ...buttonProps } = rest as NativeButtonProps;
 
-    control = (
+    element = (
       <button
         className={classes}
         type={type}
@@ -93,11 +93,11 @@ export function IconButton({
   }
 
   // Disabled controls get no pointer or focus events, so a tooltip could never open.
-  if (!tooltip || disabled) return control;
+  if (!tooltip || disabled) return element;
 
   return (
     <Tooltip content={label} side={tooltipSide} shortcut={shortcut}>
-      {control}
+      {element}
     </Tooltip>
   );
 }
