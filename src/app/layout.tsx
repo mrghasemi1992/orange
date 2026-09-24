@@ -7,7 +7,7 @@ import { fontVariables } from "@/styles/fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Orange",
+  title: { default: "Orange", template: "%s | Orange" },
   description: "A modern Hacker News reader",
 };
 

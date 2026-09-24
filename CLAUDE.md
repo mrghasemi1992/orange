@@ -65,7 +65,7 @@ Orange is a read-only Hacker News client with a modern reader UI. It is a portfo
 ## Conventions
 
 - **Folder layout:** the repo root is the `orange` folder. All app code lives in `orange/src` (the App Router is in `src/app`). Config files (`package.json`, `next.config`, `tsconfig.json`, ESLint config, `.storybook/`) stay at the repo root. Never create a nested project folder.
-- **Components:** design system components (from the Claude Design handoff) live in `src/components/ui/`. Feature components (sidebar, story row, and so on) live directly in `src/components/`. Storybook titles follow the folder: `Design system/<Name>`. Each component gets one lowercase folder, containing:
+- **Components:** design system components (from the Claude Design handoff) live in `src/components/ui/`. Feature components (sidebar, story row, and so on) live directly in `src/components/`. Storybook titles follow the folder: `Design system/<Name>` for `ui/`, `Components/<Name>` for feature components. Each component gets one lowercase folder, containing:
   - `index.tsx`
   - `styles.module.css`
   - `index.stories.tsx`
@@ -73,6 +73,10 @@ Orange is a read-only Hacker News client with a modern reader UI. It is a portfo
 - **Props types:** extend native element props with `ComponentProps<"button">` (React 19), not `ComponentPropsWithoutRef`. `ref` is a normal prop, so components pass it through with `...rest` and need no `forwardRef`. A component that can render a button or a link (`Button`, `IconButton`) is typed as a union and passes `...rest` to both.
 - Use Server Components by default. Add `"use client"` only when a component needs state, effects, or browser APIs.
 - Use design tokens (CSS variables) for all colors, spacing, radius, fonts, and shadows. No hard-coded values in component CSS. Part-specific sizes from the design (control heights, badge padding, and so on) go in `src/styles/tokens/components.css`.
+- **Types, constants and helpers** go in their own top-level folders, one file per topic (for example `sections.ts` in each):
+  - `src/types/`: shared TypeScript types
+  - `src/constants/`: fixed data and config (for example `SECTIONS`)
+  - `src/helpers/`: small pure functions that work on that data (for example `getSection`)
 - Folder structure inside `src/`: see the "Project structure" section below.
 
 ## Workflow
@@ -133,6 +137,9 @@ orange/                     # repo root
 │   │       ├── badge/  button/  divider/  icon-button/  kbd/  link/
 │   │       ├── logo/  logo-mark/  meta-item/  skeleton/  tooltip/
 │   │       └── foundations/  # Storybook-only docs: tokens, type scale, real data
+│   ├── constants/          # fixed data and config (sections.ts: SECTIONS)
+│   ├── helpers/            # pure functions on that data (sections.ts: getSection)
+│   ├── types/              # shared types (sections.ts: Section, SectionId)
 │   ├── lib/
 │   │   ├── cx.ts           # class name helper
 │   │   └── theme/          # theme helper, inline script, ThemeSync
