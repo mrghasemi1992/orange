@@ -35,7 +35,9 @@ export function Badge({
   const content = (
     <>
       {Icon ? <Icon className={styles.icon} /> : null}
-      {variant === "domain" ? <span>({children})</span> : children}
+      <span className={styles.label}>
+        {variant === "domain" ? <>({children})</> : children}
+      </span>
     </>
   );
 
