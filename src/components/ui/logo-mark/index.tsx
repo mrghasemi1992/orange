@@ -1,3 +1,5 @@
+import { cx } from "@/lib/cx";
+
 import styles from "./styles.module.css";
 
 type LogoMarkProps = {
@@ -12,7 +14,7 @@ type LogoMarkProps = {
 export function LogoMark({ size = 32, title, className }: LogoMarkProps) {
   return (
     <svg
-      className={[styles.root, className].filter(Boolean).join(" ")}
+      className={cx(styles.root, className)}
       viewBox="0 0 32 32"
       width={size}
       height={size}
