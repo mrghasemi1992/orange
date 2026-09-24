@@ -1,5 +1,3 @@
-import type { CSSProperties } from "react";
-
 import { cx } from "@/lib/cx";
 
 import styles from "./styles.module.css";
@@ -28,10 +26,6 @@ export function Skeleton({
   className,
 }: SkeletonProps) {
   const classes = cx(styles.root, styles[variant], className);
-  const style = (w: string | undefined): CSSProperties => ({
-    width: w,
-    height,
-  });
 
   if (lines > 1) {
     return (
@@ -40,12 +34,17 @@ export function Skeleton({
           <span
             key={i}
             className={classes}
-            style={style(width ?? STACK_WIDTHS[i % STACK_WIDTHS.length])}
+            style={{
+              width: width ?? STACK_WIDTHS[i % STACK_WIDTHS.length],
+              height,
+            }}
           />
         ))}
       </span>
     );
   }
 
-  return <span className={classes} style={style(width)} aria-hidden="true" />;
+  return (
+    <span className={classes} style={{ width, height }} aria-hidden="true" />
+  );
 }
