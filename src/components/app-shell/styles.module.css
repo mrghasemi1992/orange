@@ -25,19 +25,38 @@
 }
 
 .root {
-  display: grid;
-  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
   min-height: 100dvh;
 }
 
-.sidebar {
-  position: sticky;
-  top: 0;
-  height: 100dvh;
+/* Two classes, so these win over the components' own display rules regardless of CSS order. */
+.root .sidebar {
+  display: none;
 }
 
 .main {
-  padding: var(--space-10) var(--gutter-desktop);
+  padding: var(--space-6) var(--gutter-mobile);
+}
+
+@media (--nav-desktop) {
+  .root {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  }
+
+  .root .topbar {
+    display: none;
+  }
+
+  .root .sidebar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    height: 100dvh;
+  }
+
+  .main {
+    padding: var(--space-10) var(--gutter-desktop);
+  }
 }
 
 /* The skip link focuses main; the container itself needs no ring. */

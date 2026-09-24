@@ -1,0 +1,70 @@
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-topbar);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  height: var(--topbar-height);
+  padding: 0 var(--space-2);
+  border-bottom: var(--border-width) solid var(--border);
+  background: var(--bg);
+}
+
+.home {
+  display: flex;
+  align-items: center;
+  height: var(--control-height-md);
+  padding: 0 var(--space-1);
+  border-radius: var(--radius-md);
+  color: var(--text);
+  text-decoration: none;
+  transition: box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.home:hover {
+  color: var(--text);
+}
+
+.home:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+/* Scrim fades, panel slides in from the left. Duration tokens are 0ms under reduced motion. */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-drawer);
+  background: var(--overlay);
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+.backdrop[data-starting-style],
+.backdrop[data-ending-style] {
+  opacity: 0;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: var(--z-drawer);
+  width: var(--drawer-width);
+  overflow-y: auto;
+  border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.drawer[data-starting-style],
+.drawer[data-ending-style] {
+  transform: translateX(-100%);
+}
+
+.drawer:focus-visible {
+  outline: none;
+}

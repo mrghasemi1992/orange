@@ -12,6 +12,8 @@
   --nav-item-gap: 10px;
   --sidebar-padding: var(--space-4) var(--space-3);
   --sidebar-footer-padding: var(--space-3) var(--space-1) 0;
+  --z-topbar: 10;
+  --z-drawer: 30; /* below --z-tooltip, so the drawer's toggle tooltip shows */
   --z-skip-link: 50;
   /* --accent-text on --accent-subtle is about 4.3:1 in light, just under AA; one step deeper passes. */
   --nav-active-text: var(--accent-text-hover);
