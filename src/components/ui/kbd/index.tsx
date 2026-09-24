@@ -1,10 +1,10 @@
-import type { ComponentPropsWithoutRef } from "react";
+import type { ComponentProps } from "react";
 
 import { cx } from "@/lib/cx";
 
 import styles from "./styles.module.css";
 
-type KbdProps = ComponentPropsWithoutRef<"kbd"> & {
+type KbdProps = ComponentProps<"kbd"> & {
   size?: "sm" | "md";
 };
 

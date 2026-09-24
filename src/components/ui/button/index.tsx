@@ -1,6 +1,6 @@
 import NextLink from "next/link";
 import type { LucideIcon } from "lucide-react";
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 
 import { cx } from "@/lib/cx";
 
@@ -18,19 +18,19 @@ type ButtonBaseProps = {
 };
 
 type ButtonAsButton = ButtonBaseProps &
-  Omit<ComponentPropsWithoutRef<"button">, keyof ButtonBaseProps> & {
+  Omit<ComponentProps<"button">, keyof ButtonBaseProps> & {
     href?: undefined;
   };
 
 type ButtonAsLink = ButtonBaseProps &
-  Omit<ComponentPropsWithoutRef<"a">, keyof ButtonBaseProps> & { href: string };
+  Omit<ComponentProps<"a">, keyof ButtonBaseProps> & { href: string };
 
 export type ButtonProps = ButtonAsButton | ButtonAsLink;
 
-type AnchorProps = Omit<ComponentPropsWithoutRef<"a">, "href"> & {
+type AnchorProps = Omit<ComponentProps<"a">, "href"> & {
   href: string;
 };
-type NativeButtonProps = ComponentPropsWithoutRef<"button">;
+type NativeButtonProps = ComponentProps<"button">;
 
 /** Text button: primary (one per view), secondary, or ghost. Renders a link when `href` is set. */
 export function Button({

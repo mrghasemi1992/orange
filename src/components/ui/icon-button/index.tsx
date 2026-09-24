@@ -1,16 +1,13 @@
 import NextLink from "next/link";
 import type { LucideIcon } from "lucide-react";
-import type { ComponentPropsWithoutRef } from "react";
+import type { ComponentProps } from "react";
 
 import { Tooltip } from "@/components/ui/tooltip";
 import { cx } from "@/lib/cx";
 
 import styles from "./styles.module.css";
 
-type IconButtonProps = Omit<
-  ComponentPropsWithoutRef<"button">,
-  "children" | "aria-label"
-> & {
+type IconButtonBaseProps = {
   icon: LucideIcon;
   /** Required accessible name. Also used as the tooltip text, so both always match. */
   label: string;
@@ -21,9 +18,23 @@ type IconButtonProps = Omit<
   tooltipSide?: "top" | "bottom" | "left" | "right";
   /** Keyboard shortcut shown inside the tooltip. */
   shortcut?: string;
-  /** Renders a link instead of a button. */
-  href?: string;
+  disabled?: boolean;
+  className?: string;
 };
+
+type OmittedProps = keyof IconButtonBaseProps | "children" | "aria-label";
+
+type IconButtonAsButton = IconButtonBaseProps &
+  Omit<ComponentProps<"button">, OmittedProps> & { href?: undefined };
+
+/** Renders a link instead of a button. */
+type IconButtonAsLink = IconButtonBaseProps &
+  Omit<ComponentProps<"a">, OmittedProps> & { href: string };
+
+export type IconButtonProps = IconButtonAsButton | IconButtonAsLink;
+
+type AnchorProps = Omit<ComponentProps<"a">, "href" | "children">;
+type NativeButtonProps = Omit<ComponentProps<"button">, "children">;
 
 /** Icon-only action. The label is required and doubles as the tooltip. */
 export function IconButton({
@@ -34,36 +45,47 @@ export function IconButton({
   tooltip = true,
   tooltipSide = "bottom",
   shortcut,
-  href,
   disabled = false,
   className,
-  type = "button",
   ...rest
 }: IconButtonProps) {
   const classes = cx(styles.root, styles[variant], styles[size], className);
   const icon = <Icon className={styles.icon} />;
 
   let control;
-  if (href !== undefined && !disabled) {
-    control = (
-      <NextLink className={classes} href={href} aria-label={label}>
+  if (rest.href !== undefined) {
+    const { href, ...anchorProps } = rest as AnchorProps & { href: string };
+
+    // A disabled link has no href, so it cannot be followed or focused.
+    control = disabled ? (
+      <a
+        className={classes}
+        aria-label={label}
+        aria-disabled="true"
+        {...anchorProps}
+      >
+        {icon}
+      </a>
+    ) : (
+      <NextLink
+        className={classes}
+        href={href}
+        aria-label={label}
+        {...anchorProps}
+      >
         {icon}
       </NextLink>
     );
-  } else if (href !== undefined) {
-    control = (
-      <a className={classes} aria-label={label} aria-disabled="true">
-        {icon}
-      </a>
-    );
   } else {
+    const { type = "button", ...buttonProps } = rest as NativeButtonProps;
+
     control = (
       <button
         className={classes}
         type={type}
         aria-label={label}
         disabled={disabled}
-        {...rest}
+        {...buttonProps}
       >
         {icon}
       </button>

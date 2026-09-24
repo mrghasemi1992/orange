@@ -1,12 +1,12 @@
 import type { LucideIcon } from "lucide-react";
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 
 import { Link } from "@/components/ui/link";
 import { cx } from "@/lib/cx";
 
 import styles from "./styles.module.css";
 
-type MetaItemProps = Omit<ComponentPropsWithoutRef<"span">, "children"> & {
+type MetaItemProps = Omit<ComponentProps<"span">, "children"> & {
   icon?: LucideIcon;
   children: ReactNode;
   /** Words before the value that are not part of the link, for example "by". */

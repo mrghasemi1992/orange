@@ -1,12 +1,12 @@
 import NextLink from "next/link";
 import { ExternalLink } from "lucide-react";
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 
 import { cx } from "@/lib/cx";
 
 import styles from "./styles.module.css";
 
-type LinkProps = Omit<ComponentPropsWithoutRef<"a">, "href"> & {
+type LinkProps = Omit<ComponentProps<"a">, "href"> & {
   href: string;
   children: ReactNode;
   /** inline: links in body copy. user: orange usernames. quiet: story titles. */

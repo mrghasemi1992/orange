@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import type { Decorator, Meta, StoryObj } from "@storybook/nextjs-vite";
 import {
   ArrowLeft,
   ExternalLink,
@@ -9,6 +9,13 @@ import {
 } from "lucide-react";
 
 import { IconButton } from "./index";
+
+// Room above and below so tooltips are not clipped in the canvas.
+const withTooltipSpace: Decorator = (Story) => (
+  <div style={{ paddingBlock: "var(--space-8)" }}>
+    <Story />
+  </div>
+);
 
 const meta = {
   title: "Design system/Icon button",
@@ -34,13 +41,7 @@ const meta = {
       options: ["top", "bottom", "left", "right"],
     },
   },
-  decorators: [
-    (Story) => (
-      <div style={{ paddingBlock: "var(--space-8)" }}>
-        <Story />
-      </div>
-    ),
-  ],
+  decorators: [withTooltipSpace],
 } satisfies Meta<typeof IconButton>;
 
 export default meta;
