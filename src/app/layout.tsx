@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 
 import { AppShell } from "@/components/app-shell";
 import { ThemeSync } from "@/components/theme-sync";
+import { SITE_DESCRIPTION, SITE_NAME } from "@/constants/site";
 import { THEME_SCRIPT } from "@/constants/theme";
 import { fontVariables } from "@/styles/fonts";
 
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: { default: "Orange", template: "%s | Orange" },
-  description: "A modern Hacker News reader",
+  title: { default: SITE_NAME, template: `%s | ${SITE_NAME}` },
+  description: SITE_DESCRIPTION,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

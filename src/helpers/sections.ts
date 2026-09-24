@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { SECTIONS } from "@/constants/sections";
+import { SITE_NAME } from "@/constants/site";
 import type { Section, SectionId } from "@/types/sections";
 
 export function getSection(id: SectionId): Section {
@@ -11,5 +12,6 @@ export function getSection(id: SectionId): Section {
 /** Page title and description for a section route. */
 export function getSectionMetadata(id: SectionId): Metadata {
   const { label, description } = getSection(id);
-  return { title: label, description };
+  // The layout's title template skips "/", which shares the root segment, so write the full title.
+  return { title: { absolute: `${label} | ${SITE_NAME}` }, description };
 }
