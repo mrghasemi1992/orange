@@ -35,6 +35,8 @@ const preview: Preview = {
   decorators: [withAppShell],
   parameters: {
     layout: "padded",
+    // App Router mocks for next/navigation. Set nextjs.navigation.pathname in a story to mark a link current.
+    nextjs: { appDirectory: true },
     controls: {
       matchers: {
         color: /(background|color)$/i,

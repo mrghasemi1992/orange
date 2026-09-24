@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { AppShell } from "@/components/app-shell";
 import { ThemeSync } from "@/components/theme-sync";
 import { THEME_SCRIPT } from "@/constants/theme";
 import { fontVariables } from "@/styles/fonts";
@@ -20,7 +21,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body>
         <ThemeSync />
-        {children}
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

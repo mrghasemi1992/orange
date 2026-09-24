@@ -1,0 +1,52 @@
+/* First Tab stop. Off-screen until focused. */
+.skipLink {
+  position: fixed;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: var(--z-skip-link);
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-md);
+  color: var(--text);
+  font: var(--type-label-weight) var(--type-label-size) / var(--type-label-line)
+    var(--font-sans);
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skipLink:focus {
+  transform: none;
+}
+
+.skipLink:hover {
+  color: var(--text);
+}
+
+.root {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  min-height: 100dvh;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+}
+
+.main {
+  padding: var(--space-10) var(--gutter-desktop);
+}
+
+/* The skip link focuses main; the container itself needs no ring. */
+.main:focus {
+  outline: none;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  max-width: var(--content-max);
+}
