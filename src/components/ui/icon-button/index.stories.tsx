@@ -1,11 +1,11 @@
 import type { Decorator, Meta, StoryObj } from "@storybook/nextjs-vite";
 import {
-  ArrowLeft,
-  ExternalLink,
-  Eye,
-  Keyboard,
-  Moon,
-  Search,
+  ArrowLeftIcon,
+  ExternalLinkIcon,
+  EyeIcon,
+  KeyboardIcon,
+  MoonIcon,
+  SearchIcon,
 } from "lucide-react";
 
 import { IconButton } from "./index";
@@ -21,7 +21,7 @@ const meta = {
   title: "Design system/Icon button",
   component: IconButton,
   args: {
-    icon: Moon,
+    icon: MoonIcon,
     label: "Switch to dark theme",
     variant: "ghost",
     size: "md",
@@ -58,27 +58,32 @@ export const Ghost: Story = {};
 export const WithShortcut: Story = { args: { shortcut: "T" } };
 
 export const Secondary: Story = {
-  args: { icon: Search, label: "Search", variant: "secondary" },
+  args: { icon: SearchIcon, label: "Search", variant: "secondary" },
 };
 
 export const Accent: Story = {
-  args: { icon: Eye, label: "Show", variant: "accent" },
+  args: { icon: EyeIcon, label: "Show", variant: "accent" },
 };
 
 export const Small: Story = {
-  args: { icon: ArrowLeft, label: "Back", size: "sm" },
+  args: { icon: ArrowLeftIcon, label: "Back", size: "sm" },
 };
 
 export const AsLink: Story = {
-  args: { icon: ExternalLink, label: "Open original", href: "/" },
+  args: { icon: ExternalLinkIcon, label: "Open original", href: "/" },
 };
 
 export const Disabled: Story = {
   render: () => (
     <div style={row}>
-      <IconButton icon={ExternalLink} label="Open original" disabled />
-      <IconButton icon={Search} label="Search" variant="secondary" disabled />
-      <IconButton icon={Eye} label="Show" variant="accent" disabled />
+      <IconButton icon={ExternalLinkIcon} label="Open original" disabled />
+      <IconButton
+        icon={SearchIcon}
+        label="Search"
+        variant="secondary"
+        disabled
+      />
+      <IconButton icon={EyeIcon} label="Show" variant="accent" disabled />
     </div>
   ),
 };
@@ -87,12 +92,12 @@ export const Disabled: Story = {
 export const AllVariants: Story = {
   render: () => (
     <div style={row}>
-      <IconButton icon={Moon} label="Switch to dark theme" shortcut="T" />
-      <IconButton icon={Search} label="Search" variant="secondary" />
-      <IconButton icon={Eye} label="Show" variant="accent" />
-      <IconButton icon={Keyboard} label="Shortcuts" />
-      <IconButton icon={ArrowLeft} label="Back" size="sm" />
-      <IconButton icon={ExternalLink} label="Open original" disabled />
+      <IconButton icon={MoonIcon} label="Switch to dark theme" shortcut="T" />
+      <IconButton icon={SearchIcon} label="Search" variant="secondary" />
+      <IconButton icon={EyeIcon} label="Show" variant="accent" />
+      <IconButton icon={KeyboardIcon} label="Shortcuts" />
+      <IconButton icon={ArrowLeftIcon} label="Back" size="sm" />
+      <IconButton icon={ExternalLinkIcon} label="Open original" disabled />
     </div>
   ),
 };

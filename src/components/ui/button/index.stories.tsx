@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { ArrowLeft, ExternalLink, Search } from "lucide-react";
+import { ArrowLeftIcon, ExternalLinkIcon, SearchIcon } from "lucide-react";
 
 import { Button } from "./index";
 
@@ -51,14 +51,14 @@ export const Secondary: Story = {
 export const Ghost: Story = { args: { variant: "ghost", children: "Dismiss" } };
 
 export const WithIcon: Story = {
-  args: { size: "sm", iconLeft: ArrowLeft, children: "Back" },
+  args: { size: "sm", iconLeft: ArrowLeftIcon, children: "Back" },
 };
 
 export const AsLink: Story = {
   args: {
     href: "/",
     variant: "primary",
-    iconRight: ExternalLink,
+    iconRight: ExternalLinkIcon,
     children: "Visit site",
   },
 };
@@ -87,7 +87,7 @@ export const AllVariants: Story = {
       {(["primary", "secondary", "ghost"] as const).map((variant) => (
         <div key={variant} style={row}>
           <Button variant={variant}>Open story</Button>
-          <Button variant={variant} size="sm" iconLeft={Search}>
+          <Button variant={variant} size="sm" iconLeft={SearchIcon}>
             Search
           </Button>
           <Button variant={variant} disabled>

@@ -1,5 +1,5 @@
 import NextLink from "next/link";
-import { ExternalLink } from "lucide-react";
+import { ExternalLinkIcon } from "lucide-react";
 import type { ComponentProps, ReactNode } from "react";
 
 import { cx } from "@/lib/cx";
@@ -36,7 +36,7 @@ export function Link({
         {...rest}
       >
         {children}
-        <ExternalLink className={styles.externalIcon} />
+        <ExternalLinkIcon className={styles.externalIcon} />
       </a>
     );
   }

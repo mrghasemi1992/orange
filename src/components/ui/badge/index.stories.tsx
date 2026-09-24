@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { ChartColumn } from "lucide-react";
+import { ChartColumnIcon } from "lucide-react";
 
 import { Badge } from "./index";
 
@@ -35,7 +35,7 @@ export const Accent: Story = {
 export const Outline: Story = { args: { variant: "outline", children: "Job" } };
 
 export const WithIcon: Story = {
-  args: { icon: ChartColumn, children: "Poll" },
+  args: { icon: ChartColumnIcon, children: "Poll" },
 };
 
 export const Domain: Story = {
@@ -60,7 +60,7 @@ export const AllVariants: Story = {
           <Badge size={size} variant="outline">
             Job
           </Badge>
-          <Badge size={size} icon={ChartColumn}>
+          <Badge size={size} icon={ChartColumnIcon}>
             Poll
           </Badge>
           <Badge size={size} variant="domain" href="/">

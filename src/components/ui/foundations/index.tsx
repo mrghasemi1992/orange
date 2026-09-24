@@ -1,13 +1,13 @@
 "use client";
 
 import {
-  ArrowBigUp,
-  ChartColumn,
-  Clock,
-  ExternalLink,
-  Feather,
-  FileText,
-  MessageSquare,
+  ArrowBigUpIcon,
+  ChartColumnIcon,
+  ClockIcon,
+  ExternalLinkIcon,
+  FeatherIcon,
+  FileTextIcon,
+  MessageSquareIcon,
 } from "lucide-react";
 import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 
@@ -318,7 +318,7 @@ type ExampleStory = {
 
 const MESSY_STORIES: ExampleStory[] = [
   {
-    icon: FileText,
+    icon: FileTextIcon,
     kind: "Show HN",
     title:
       "I spent eighteen months rebuilding the Hacker News front page as a calm, keyboard-driven reader that works offline, renders comment threads without collapsing them, and never loads a single tracking script",
@@ -328,7 +328,7 @@ const MESSY_STORIES: ExampleStory[] = [
     comments: "1,532 comments",
   },
   {
-    icon: ExternalLink,
+    icon: ExternalLinkIcon,
     title: "The exodus of China’s wealthy to Japan",
     domain: "wsj.com",
     points: "1 point",
@@ -337,7 +337,7 @@ const MESSY_STORIES: ExampleStory[] = [
     comments: "1 comment",
   },
   {
-    icon: ChartColumn,
+    icon: ChartColumnIcon,
     kind: "Poll",
     title: "Poll: where do you live?",
     points: "986 points",
@@ -372,14 +372,14 @@ export function RealData() {
                 ) : null}
               </p>
               <div className={styles.meta}>
-                <MetaItem icon={ArrowBigUp}>{story.points}</MetaItem>
-                <MetaItem icon={Feather} prefix="by" href="/" wrap>
+                <MetaItem icon={ArrowBigUpIcon}>{story.points}</MetaItem>
+                <MetaItem icon={FeatherIcon} prefix="by" href="/" wrap>
                   {story.user}
                 </MetaItem>
-                <MetaItem icon={Clock} title="12 Mar 2025, 09:41">
+                <MetaItem icon={ClockIcon} title="12 Mar 2025, 09:41">
                   {story.time}
                 </MetaItem>
-                <MetaItem icon={MessageSquare}>{story.comments}</MetaItem>
+                <MetaItem icon={MessageSquareIcon}>{story.comments}</MetaItem>
               </div>
             </div>
           </div>

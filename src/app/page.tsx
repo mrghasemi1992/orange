@@ -1,10 +1,10 @@
 import {
-  ArrowBigUp,
-  Clock,
-  Feather,
-  Keyboard,
-  MessageSquare,
-  Moon,
+  ArrowBigUpIcon,
+  ClockIcon,
+  FeatherIcon,
+  KeyboardIcon,
+  MessageSquareIcon,
+  MoonIcon,
 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -32,8 +32,16 @@ export default function Home() {
           <Button variant="primary">Open story</Button>
           <Button>Load more</Button>
           <Button variant="ghost">Dismiss</Button>
-          <IconButton icon={Moon} label="Switch to dark theme" shortcut="T" />
-          <IconButton icon={Keyboard} label="Shortcuts" variant="secondary" />
+          <IconButton
+            icon={MoonIcon}
+            label="Switch to dark theme"
+            shortcut="T"
+          />
+          <IconButton
+            icon={KeyboardIcon}
+            label="Shortcuts"
+            variant="secondary"
+          />
         </div>
 
         <div className={styles.story}>
@@ -47,12 +55,12 @@ export default function Home() {
             <Badge variant="domain">orange.dev</Badge>
           </p>
           <div className={styles.meta}>
-            <MetaItem icon={ArrowBigUp}>1 point</MetaItem>
-            <MetaItem icon={Feather} prefix="by" href="/">
+            <MetaItem icon={ArrowBigUpIcon}>1 point</MetaItem>
+            <MetaItem icon={FeatherIcon} prefix="by" href="/">
               binarytale
             </MetaItem>
-            <MetaItem icon={Clock}>5 minutes ago</MetaItem>
-            <MetaItem icon={MessageSquare}>1 comment</MetaItem>
+            <MetaItem icon={ClockIcon}>5 minutes ago</MetaItem>
+            <MetaItem icon={MessageSquareIcon}>1 comment</MetaItem>
           </div>
         </div>
 

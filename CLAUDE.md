@@ -58,7 +58,7 @@ Orange is a read-only Hacker News client with a modern reader UI. It is a portfo
   - Light tokens live on `:root` (and `[data-theme="light"]`), dark tokens on `[data-theme="dark"]`.
   - An inline script in `<head>` sets `data-theme` on `<html>` before the first paint: the saved choice in `localStorage` (`orange-theme`), otherwise the OS setting.
   - `src/lib/theme` holds the helper (`getTheme`, `setTheme`, `subscribeTheme`) and `ThemeSync`, which follows OS and other-tab changes.
-- **Icons:** lucide-react, stroke 1.75 (set globally in CSS), sized with the `--icon-size-*` tokens.
+- **Icons:** lucide-react, stroke 1.75 (set globally in CSS), sized with the `--icon-size-*` tokens. Import the `*Icon` export (`SearchIcon`, not `Search`) so icon names never clash with other identifiers or text.
 - **Accessibility:** WCAG AA contrast in both themes, visible keyboard focus, respect `prefers-reduced-motion`.
 
 ## Conventions
@@ -69,6 +69,7 @@ Orange is a read-only Hacker News client with a modern reader UI. It is a portfo
   - `styles.module.css`
   - `index.stories.tsx`
   - `spec.test.tsx` (added later, when testing starts)
+- **Props types:** extend native element props with `ComponentProps<"button">` (React 19), not `ComponentPropsWithoutRef`. `ref` is a normal prop, so components pass it through with `...rest` and need no `forwardRef`. A component that can render a button or a link (`Button`, `IconButton`) is typed as a union and passes `...rest` to both.
 - Use Server Components by default. Add `"use client"` only when a component needs state, effects, or browser APIs.
 - Use design tokens (CSS variables) for all colors, spacing, radius, fonts, and shadows. No hard-coded values in component CSS. Part-specific sizes from the design (control heights, badge padding, and so on) go in `src/styles/tokens/components.css`.
 - Folder structure inside `src/`: see the "Project structure" section below.
@@ -159,5 +160,7 @@ Planned folders inside `src/` (created when first needed):
 - `src/lib/`: API clients and Zod schemas (Phase 2+)
 
 Tooling: pnpm, Turbopack (Next.js default), Prettier (default options) with `eslint-config-prettier`, React Compiler off.
+
+The dev server and Storybook run on `orange.localhost` (`next dev -H orange.localhost`, `storybook dev --host orange.localhost`); `allowedDevOrigins` in `next.config.ts` allows that origin.
 
 Scripts: `dev`, `build`, `start`, `lint`, `typecheck`, `format`, `format:check`, `storybook`, `build-storybook`.

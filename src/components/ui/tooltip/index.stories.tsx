@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { Sun } from "lucide-react";
+import { SunIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { IconButton } from "@/components/ui/icon-button";
@@ -55,7 +55,7 @@ export const Open: Story = {
     open: true,
     children: (
       <IconButton
-        icon={Sun}
+        icon={SunIcon}
         label="Switch to dark theme"
         variant="secondary"
         tooltip={false}
