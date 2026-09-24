@@ -60,6 +60,8 @@ Orange is a read-only Hacker News client with a modern reader UI. It is a portfo
   - An inline script in `<head>` sets `data-theme` on `<html>` before the first paint: the saved choice in `localStorage` (`orange-theme`), otherwise the OS setting.
   - `src/utils/theme.ts` holds the theme functions (`getThemeFromDocument`, `setThemePreference`, `subscribeToThemeChanges`). `src/constants/theme.ts` holds the storage key and the inline script (`THEME_SCRIPT`). `src/components/theme-sync/` holds `ThemeSync`, which follows OS and other-tab changes.
 - **Icons:** lucide-react, stroke 1.75 (set globally in CSS), sized with the `--icon-size-*` tokens. Import the `*Icon` export (`SearchIcon`, not `Search`) so icon names never clash with other identifiers or text.
+- **Breakpoints:** `@custom-media` rules in `src/styles/media.css` (`--nav-mobile` is `width < 48rem`, `--nav-desktop` is `width >= 48rem`). `postcss.config.mjs` (`@csstools/postcss-global-data` + `postcss-custom-media`) injects them into every CSS file, so modules write `@media (--nav-mobile)` and never a raw width. JavaScript (`matchMedia`) uses the same values from `src/constants/media.ts`; keep the two in sync.
+- **Theme toggle:** one icon button that switches light and dark and saves the choice. No System option: the OS setting applies until the first click. Both icons render and CSS on `[data-theme]` shows the right one; the label comes from `useSyncExternalStore` ("Toggle theme" on the server). The tooltip shows `T`; the shortcut is wired in Phase 7.
 - **Accessibility:** WCAG AA contrast in both themes, visible keyboard focus, respect `prefers-reduced-motion`.
 
 ## Conventions
@@ -72,7 +74,7 @@ Orange is a read-only Hacker News client with a modern reader UI. It is a portfo
   - `spec.test.tsx` (added later, when testing starts)
 - **Props types:** extend native element props with `ComponentProps<"button">` (React 19), not `ComponentPropsWithoutRef`. `ref` is a normal prop, so components pass it through with `...rest` and need no `forwardRef`. A component that can render a button or a link (`Button`, `IconButton`) is typed as a union and passes `...rest` to both.
 - Use Server Components by default. Add `"use client"` only when a component needs state, effects, or browser APIs.
-- Use design tokens (CSS variables) for all colors, spacing, radius, fonts, and shadows. No hard-coded values in component CSS. Part-specific sizes from the design (control heights, badge padding, and so on) go in `src/styles/tokens/components.css`.
+- Use design tokens (CSS variables) for all colors, spacing, radius, fonts, and shadows. No hard-coded values in component CSS. Part-specific sizes from the design (control heights, badge padding, sidebar width, and so on) go in `src/styles/tokens/components.css`. Media queries use the custom media rules from `src/styles/media.css`.
 - **Types, constants, utils and helpers** go in their own top-level folders, one file per topic (for example `sections.ts`):
   - `src/types/`: shared TypeScript types
   - `src/constants/`: fixed data and config (for example `SECTIONS`, the theme storage key)
@@ -110,7 +112,7 @@ Phase 0a (project setup) has no design step. It runs in Claude Code only.
 |---|-------|--------|
 | 0a | Project setup (on `main`): Next.js, TypeScript, ESLint, packages, Storybook install | Done |
 | 0b | Design system (branch `feature/phase-0-design-system`): logo, tokens, fonts, themes, base components, Storybook wiring, first Vercel deploy | Done |
-| 1 | App shell: sidebar (Top, New, Best, Ask, Show, Jobs), theme toggle, mobile layout, loading/error/not-found pages | Not started |
+| 1 | App shell (branch `feature/phase-1-app-shell`): sidebar (Top, New, Best, Ask, Show, Jobs), theme toggle, mobile top bar and drawer, loading/error/not-found pages | Done |
 | 2 | Story lists: Zod schemas, story rows with type icons, load more on scroll | Not started |
 | 3 | Story page and comments: Algolia comment tree, HTML sanitizing, collapse, deleted/dead handling, polls, virtualization | Not started |
 | 4 | User profiles | Not started |
@@ -120,28 +122,56 @@ Phase 0a (project setup) has no design step. It runs in Claude Code only.
 | 8 | PWA and offline support | Not started |
 | 9 | Tests | Not started |
 
+## Routes
+
+| Route | Page | Since |
+|-------|------|-------|
+| `/` | Top | Phase 1 (placeholder until Phase 2) |
+| `/new` | New | Phase 1 (placeholder until Phase 2) |
+| `/best` | Best | Phase 1 (placeholder until Phase 2) |
+| `/ask` | Ask | Phase 1 (placeholder until Phase 2) |
+| `/show` | Show | Phase 1 (placeholder until Phase 2) |
+| `/jobs` | Jobs | Phase 1 (placeholder until Phase 2) |
+
+The six section routes come from `SECTIONS` in `src/constants/sections.ts` (label, href, description, icon), shared by the sidebar and the pages. Every page renders inside `AppShell` (`src/app/layout.tsx`): skip link, sidebar (top bar and drawer below 48rem), and `<main id="main">`. `loading.tsx`, `error.tsx` and `not-found.tsx` render inside the shell too. Page titles read `<Label> | Orange`.
+
 ## Project structure
 
 ```
 orange/                     # repo root
 ├── .storybook/             # Storybook config (@storybook/nextjs-vite)
 │   ├── main.ts             # stories: src/**/*.stories.tsx
-│   └── preview.tsx         # global CSS, next/font variables, light/dark toolbar
+│   └── preview.tsx         # global CSS, next/font variables, light/dark toolbar, App Router mocks
 ├── src/
 │   ├── app/                # Next.js App Router
 │   │   ├── globals.css     # imports the tokens, base styles and type helpers
-│   │   ├── layout.tsx      # root layout: fonts, inline theme script, ThemeSync
-│   │   ├── page.tsx        # temporary home page (replaced in Phase 1)
+│   │   ├── layout.tsx      # root layout: fonts, inline theme script, ThemeSync, AppShell
+│   │   ├── page.tsx        # Top (/)
+│   │   ├── new/  best/  ask/  show/  jobs/   # page.tsx per section
+│   │   ├── loading.tsx     # story list skeleton
+│   │   ├── error.tsx       # "Something went wrong" + Try again (retry)
+│   │   ├── not-found.tsx   # "Page not found" + Back to Top
 │   │   ├── icon.svg        # favicon
 │   │   └── apple-icon.tsx  # app icon, rendered to PNG with next/og
 │   ├── components/
+│   │   ├── app-shell/      # skip link, sidebar or mobile nav, <main id="main">
+│   │   ├── sidebar/        # logo, section links, theme toggle; `drawer` variant
+│   │   ├── nav-link/       # sidebar link, sets aria-current from usePathname
+│   │   ├── mobile-nav/     # top bar + Base UI Dialog drawer, MobileNavClose
+│   │   ├── theme-toggle/   # light/dark icon button
 │   │   ├── theme-sync/     # ThemeSync: renders nothing, only index.tsx
+│   │   ├── page-header/    # page title + one-line description
+│   │   ├── page-message/   # title, description, one action (error, not found)
+│   │   ├── section-placeholder/  # temporary section body (replaced in Phase 2)
+│   │   ├── story-list-skeleton/  # loading placeholder for a story list
 │   │   └── ui/             # one lowercase folder per component
 │   │       ├── badge/  button/  divider/  icon-button/  kbd/  link/
 │   │       ├── logo/  logo-mark/  meta-item/  skeleton/  tooltip/
 │   │       └── foundations/  # Storybook-only docs: tokens, type scale, real data
 │   ├── constants/          # fixed data and config
+│   │   ├── media.ts        # NAV_DESKTOP_QUERY for matchMedia (mirrors styles/media.css)
 │   │   ├── sections.ts     # SECTIONS: label, href, description, icon
+│   │   ├── site.ts         # SITE_NAME, SITE_DESCRIPTION
 │   │   └── theme.ts        # storage key, data-theme attribute, THEME_SCRIPT
 │   ├── helpers/            # functions specific to Orange
 │   │   └── sections.ts     # getSection, getSectionMetadata
@@ -153,14 +183,16 @@ orange/                     # repo root
 │   │   └── theme.ts        # read, save and follow the theme
 │   └── styles/
 │       ├── tokens/         # colors, typography, spacing, radius, shadows, motion, components
-│       ├── base.css        # element defaults
+│       ├── media.css       # @custom-media breakpoints, injected by PostCSS
+│       ├── base.css        # element defaults, .visually-hidden
 │       ├── typography.css  # global .type-* helper classes
 │       └── fonts.ts        # next/font: Noto Sans, IBM Plex Mono
 ├── AGENTS.md               # generated and kept up to date by `next dev`
 ├── CLAUDE.md
 ├── LICENSE                 # PolyForm Noncommercial 1.0.0 + Required Notice lines
 ├── eslint.config.mjs       # flat config: next, storybook, prettier
-├── next.config.ts
+├── next.config.ts          # allowedDevOrigins, dev badge bottom-right
+├── postcss.config.mjs      # global-data + custom-media (Next.js and Storybook)
 ├── package.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
@@ -169,11 +201,12 @@ orange/                     # repo root
 └── tsconfig.json           # strict, `@/*` → `src/*`
 ```
 
-Component folders contain `index.tsx`, `styles.module.css` and `index.stories.tsx`. A component that renders nothing (`theme-sync`) has only `index.tsx`. Only `tooltip` is a client component (Base UI); `icon-button` renders it but stays a Server Component.
+Component folders contain `index.tsx`, `styles.module.css` and `index.stories.tsx`. A component that renders nothing (`theme-sync`) has only `index.tsx`. Client components: `tooltip` (Base UI), `nav-link` (usePathname), `theme-toggle`, `mobile-nav` (Base UI Dialog), `theme-sync` and `src/app/error.tsx`. Everything else is a Server Component; `icon-button` and `sidebar` render client parts but stay server-rendered.
+
+Stories that depend on the route set `parameters.nextjs.navigation.pathname` (App Router mocks are on in `.storybook/preview.tsx`).
 
 Planned folders inside `src/` (created when first needed):
 
-- `src/components/<feature>/`: feature components such as the sidebar (Phase 1+)
 - `src/lib/`: API clients and Zod schemas (Phase 2+)
 
 Tooling: pnpm, Turbopack (Next.js default), Prettier (default options) with `eslint-config-prettier`, React Compiler off.
