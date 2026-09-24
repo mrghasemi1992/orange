@@ -79,4 +79,12 @@
   --skeleton-line-height: 0.8125rem;
   --skeleton-title-height: 1.125rem;
   --skeleton-block-height: 6rem;
+
+  /* Story list skeleton (loading.tsx) */
+  --skeleton-page-title-width: 7.5rem;
+  --skeleton-page-title-height: 1.5rem;
+  --skeleton-page-description-width: 20rem;
+  --skeleton-row-gap: 14px;
+  --skeleton-row-icon: 2rem;
+  --skeleton-row-title-height: 0.9375rem;
 }
