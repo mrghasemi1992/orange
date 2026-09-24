@@ -20,7 +20,6 @@
   /* Layout */
   --gutter-mobile: var(--space-4);
   --gutter-desktop: var(--space-8);
-  --sidebar-width: 15rem;
   --content-max: 44rem;
   --row-gap-meta: var(--space-3);
 

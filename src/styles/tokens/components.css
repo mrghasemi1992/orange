@@ -3,6 +3,14 @@
 :root {
   --opacity-disabled: 0.45;
 
+  /* App shell. The breakpoint is --nav-mobile in src/styles/media.css. */
+  --sidebar-width: 15rem;
+  --topbar-height: 3.5rem;
+  --drawer-width: min(18rem, 85vw);
+  --nav-item-height: 2.25rem;
+  /* --accent-text on --accent-subtle is about 4.3:1 in light, just under AA; one step deeper passes. */
+  --nav-active-text: var(--accent-text-hover);
+
   /* Icons (lucide-react). Stroke 1.75, never above 2. */
   --icon-stroke: 1.75;
   --icon-size-xs: 11px; /* small badge */

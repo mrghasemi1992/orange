@@ -4,7 +4,7 @@
   padding: var(--space-16) var(--gutter-mobile);
 }
 
-@media (min-width: 48rem) {
+@media (--nav-desktop) {
   .main {
     padding-right: var(--gutter-desktop);
     padding-left: var(--gutter-desktop);
